@@ -1,0 +1,25 @@
+sudo lvmdiskscan
+
+sudo pvdisplay
+
+sudo pvcreate /dev/sdb
+
+sudo vgcreate <volume-name> /dev/sdb
+		 Jansens
+
+sudo vgdisplay
+
+sudo lvcreate -n <logical-volume-name> -L <disk-grootte>G <v-name>
+			  Jan			10	  Jansens
+ls /dev/mapper/
+
+sudo mount /dev/mapper/<v-name>-<lv-name> /<directory>
+		          Jansens-Jan	      data
+sudo df
+
+sudo nano /etc/fstab
+# In deze file moet je het volgende toevoegen
+# /dev/mapper/<v-naam>-<lv-naam> /<dir>    ext4    defaults        0       1
+		 Jansens-jan	  data
+sudo mount /<dir>
+	    data
