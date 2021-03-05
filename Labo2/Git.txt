@@ -26,5 +26,23 @@ Show Git Log:
 Checkout Commit:
 	git checkout <commit-id>
 
-Checkout Master:
-	git checkout master
+Make Branch:
+        git branch <branch-name>
+
+Show Branches:
+        git branch
+
+Checkout Branch:
+	git checkout <branch-name>
+
+Merge External Branch into Current Branch:
+	git merge <external-branch-name>
+
+Using Github:
+	git remote add <repo name> <Github Repo URL>
+	git puch -u <repo name> <branch>
+	git pull -u <repo name> <branch>
+
+Clone a Repo:
+	git clone <Github Repo URL>
+	(Doe dit nooit in een andere repo. Zorgt voor problemen)
