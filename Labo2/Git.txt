@@ -1,0 +1,30 @@
+Install Git on Ubuntu:
+	sudo apt-get install git
+
+Add Name and Email for Git-Logs:
+	git config --global user.name ThomasKramp
+	git config --global user.email s115472@ap.be
+
+Make a Git Repo:
+	git init
+
+Check Repo Status:
+	git status
+
+Add File to Repo:
+	git add <file / directory name>
+
+Add All Files to Repo:
+	git add .
+
+Commit File:
+	git commit -m "<discription of message>"
+
+Show Git Log:
+	git log
+
+Checkout Commit:
+	git checkout <commit-id>
+
+Checkout Master:
+	git checkout master
