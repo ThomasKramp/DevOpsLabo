@@ -40,7 +40,7 @@ Merge External Branch into Current Branch:
 
 Using Github:
 	git remote add <repo name> <Github Repo URL>
-	git puch -u <repo name> <branch>
+	git push -u <repo name> <branch>
 	git pull -u <repo name> <branch>
 
 Clone a Repo:
