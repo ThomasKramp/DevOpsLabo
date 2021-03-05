@@ -1,0 +1,72 @@
+Command: sudo aa-status
+
+Output:
+apparmor module is loaded.
+58 profiles are loaded.
+37 profiles are in enforce mode.
+   /snap/snapd/11036/usr/lib/snapd/snap-confine
+   /snap/snapd/11036/usr/lib/snapd/snap-confine//mount-namespace-capture-helper
+   /usr/bin/evince
+   /usr/bin/evince-previewer
+   /usr/bin/evince-previewer//sanitized_helper
+   /usr/bin/evince-thumbnailer
+   /usr/bin/evince//sanitized_helper
+   /usr/bin/man
+   /usr/lib/NetworkManager/nm-dhcp-client.action
+   /usr/lib/NetworkManager/nm-dhcp-helper
+   /usr/lib/connman/scripts/dhclient-script
+   /usr/lib/cups/backend/cups-pdf
+   /usr/lib/snapd/snap-confine
+   /usr/lib/snapd/snap-confine//mount-namespace-capture-helper
+   /usr/sbin/cups-browsed
+   /usr/sbin/cupsd
+   /usr/sbin/cupsd//third_party
+   /usr/sbin/ntpd
+   /usr/sbin/tcpdump
+   /{,usr/}sbin/dhclient
+   chromium_browser//browser_java
+   chromium_browser//browser_openjdk
+   chromium_browser//sanitized_helper
+   ippusbxd
+   libreoffice-senddoc
+   libreoffice-soffice//gpg
+   libreoffice-xpdfimport
+   lsb_release
+   man_filter
+   man_groff
+   nvidia_modprobe
+   nvidia_modprobe//kmod
+   snap-update-ns.snap-store
+   snap.snap-store.hook.configure
+   snap.snap-store.snap-store
+   snap.snap-store.ubuntu-software
+   snap.snap-store.ubuntu-software-local-file
+21 profiles are in complain mode.
+   /usr/sbin/dnsmasq
+   /usr/sbin/dnsmasq//libvirt_leaseshelper
+   avahi-daemon
+   chromium_browser
+   chromium_browser//chromium_browser_sandbox
+   chromium_browser//lsb_release
+   chromium_browser//xdgsettings
+   identd
+   klogd
+   libreoffice-oopslash
+   libreoffice-soffice
+   mdnsd
+   nmbd
+   nscd
+   ping
+   smbd
+   smbldap-useradd
+   smbldap-useradd///etc/init.d/nscd
+   syslog-ng
+   syslogd
+   traceroute
+3 processes have profiles defined.
+3 processes are in enforce mode.
+   /usr/sbin/cups-browsed (903) 
+   /usr/sbin/cupsd (825) 
+   /usr/sbin/ntpd (1038) 
+0 processes are in complain mode.
+0 processes are unconfined but have a profile defined.

@@ -1,0 +1,6 @@
+Command: free -m
+
+Output:
+              total        used        free      shared  buff/cache   available
+Mem:           3811         850        1923           3        1036        2716
+Swap:          2047           0        2047

@@ -1,0 +1,66 @@
+Command: sudo fdisk -l
+
+Output:
+Disk /dev/loop0: 218.102 MiB, 229629952 bytes, 448496 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop1: 55.48 MiB, 58159104 bytes, 113592 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop2: 64.79 MiB, 67915776 bytes, 132648 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop3: 31.9 MiB, 32595968 bytes, 63664 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop4: 51.4 MiB, 53522432 bytes, 104536 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/fd0: 1.42 MiB, 1474560 bytes, 2880 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x90909090
+
+Device     Boot      Start        End    Sectors  Size Id Type
+/dev/fd0p1      2425393296 4850786591 2425393296  1.1T 90 unknown
+/dev/fd0p2      2425393296 4850786591 2425393296  1.1T 90 unknown
+/dev/fd0p3      2425393296 4850786591 2425393296  1.1T 90 unknown
+/dev/fd0p4      2425393296 4850786591 2425393296  1.1T 90 unknown
+
+
+Disk /dev/sda: 50 GiB, 53687091200 bytes, 104857600 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x6d11c772
+
+Device     Boot   Start       End   Sectors  Size Id Type
+/dev/sda1  *       2048   1050623   1048576  512M  b W95 FAT32
+/dev/sda2       1052670 104855551 103802882 49.5G  5 Extended
+/dev/sda5       1052672 104855551 103802880 49.5G 83 Linux
+
+
+Disk /dev/sdb: 100 GiB, 107374182400 bytes, 209715200 sectors
+Disk model: VMware Virtual S
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
