@@ -52,7 +52,7 @@ services:
     #ports: 
     #  - 8000:80
     depends_on:
-      - wpdb      
+      - wp-db      
   
            
 #volumes:
