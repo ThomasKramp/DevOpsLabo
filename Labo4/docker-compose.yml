@@ -19,14 +19,11 @@ services:
       - MOODLE_DATABASE_PASSWORD=Th0m@s
       - MOODLE_DATABASE_NAME=moodleDB
       - VIRTUAL_HOST=m.test.be
-      - VIRTUAL_PORT=8000
       - LETSENCRYPT_HOST=m.test.be
       - LETSENCRYPT_EMAIL=j@ba.be
       - MOODLE_SKIP_INSTALL=yes 
     volumes: 
       - /data/moodle/moodle:/bitnami/moodle
-    ports:
-      - 8000:80
     depends_on:
       - moodleDB  
 
@@ -55,8 +52,10 @@ services:
       - '/home/wordpress/wordpress:/var/www/html'
     ports: 
       - 127.0.0.1:8080:80
+    link:
+      - 
     depends_on:
-      - wordpressDB      
+      - wordpressDB    
     
 volumes:
   moodleDB:
