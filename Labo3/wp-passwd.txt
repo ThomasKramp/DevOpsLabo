@@ -1,0 +1,5 @@
+Wordpress:
+	UserName:
+		thomaskramp
+	Password:
+		D8Fd1ApfrA!uANt56d
