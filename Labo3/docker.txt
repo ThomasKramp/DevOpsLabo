@@ -1,0 +1,20 @@
+docker run -d --name "db-thomaskramp" -v /var/lib/mysql:/dev/kofer-nietlogisch
+
+docker search mariadb
+
+docker pull mariadb
+
+docker run -d --name "wp-thomaskramp" --link db-thomaskramp -p 8080:80 -v /var/www/html:
+
+docker ps
+
+docker ps -a
+
+docker inspect
+
+docker logs wp-thomaskramp
+
+3 Containers:
+	mongo
+	jenkins
+	logstash
