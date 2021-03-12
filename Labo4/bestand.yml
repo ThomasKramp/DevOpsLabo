@@ -1,22 +1,22 @@
 version: '2'
 services:
-  moodledb:
+  mdl-db:
     image: 'mariadb:latest'
-    container_name: moodledb
+    container_name: mdl-kramp
     environment:
-      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=Th0m@s
     volumes:
       - '/home/prod/moodledb_data:/var/lib/mysql'
       
   moodle:
     image: 'bitnami/moodle:3'
-    container_name: moodle
+    container_name: db-kramp
     environment:
-      - MARIADB_HOST=moodledb
+      - MARIADB_HOST=db-kramp
       - MARIADB_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=root
-      - MOODLE_DATABASE_PASSWORD=password
-      - MOODLE_DATABASE_NAME=bitnami_moodle
+      - MOODLE_DATABASE_PASSWORD=Th0m@s
+      - MOODLE_DATABASE_NAME=mdl-db
       - VIRTUAL_HOST=m.test.be
       #- VIRTUAL_PORT=8001
       - LETSENCRYPT_HOST=m.test.be
@@ -27,22 +27,22 @@ services:
     #ports:
     #  - 8001:80
 
-  wpdb:
+  wp-db:
     image: 'mariadb:latest'
-    container_name: wpdb
+    container_name: db-kramp
     environment:
-      - MYSQL_ROOT_PASSWORD="password"
+      - MYSQL_ROOT_PASSWORD=Th0m@s
     volumes:
       - '/home/prod/wpdb_data/:/var/lib/mysql'
   
-  wp:
+  wordpress:
     image: 'wordpress:latest'
-    container_name: wpdc
+    container_name: wp-kramp
     environment:
-      - WORDPRESS_DB_HOST=wpdb
-      - WORDPRESS_DB_USER=admindcdb
-      - WORDPRESS_DB_PASSWORD=GvAtMqVanrLpMC9y6F8gNXpGpsxUT7MSawbZmsGgNCDgn3zEUR 
-      - WORDPRESS_DB_NAME=wpdb 
+      - WORDPRESS_DB_HOST=db-kramp
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=Th0m@s
+      - WORDPRESS_DB_NAME=wp-db 
       - VIRTUAL_HOST=test.be,www.test.be
       - LETSENCRYPT_HOST=test.be,www.test.be
       - LETSENCRYPT_EMAIL="j@ba.be"
@@ -53,61 +53,7 @@ services:
     #  - 8000:80
     depends_on:
       - wpdb      
-  smtp:
-    image: 'boky/postfix'
-    container_name: smtp
-    environment: 
-      - HOSTNAME=smtp.digitaalcongres.be 
-      - MYNETWORKS=172.18.0.0/24
-      - MASQUERADED_DOMAINS=test.be
-      - ALLOWED_SENDER_DOMAINS=test.be
-  survey:
-    image: docker.io/crramirez/limesurvey
-    container_name: survey
-    volumes:
-      - '/home/prod/survey/upload:/app/upload'
-      - '/home/prod/survey/db:/var/lib/mysql'
-    ports:
-      - 8080:80
-    environment:
-      - HTTP_LOCATION="poll"
-      - VIRTUAL_HOST=survey.test.be
-      - LETSENCRYPT_HOST=survey.test.be
-      - LETSENCRYPT_EMAIL="support@ba.be"
-
-  nginx-proxy:  
-    image: 'jwilder/nginx-proxy:latest'
-    container_name: nginx-proxy
-    volumes:
-      - '/home/prod/system/nginx/certs:/etc/nginx/certs:rw'
-      - '/home/prod/system/nginx/vhost.d:/etc/nginx/vhost.d'
-      - '/home/prod/system/nginx/conf.d:/etc/nginx/conf.d:rw'
-      - '/var/run/docker.sock:/tmp/docker.sock:ro'
-      - '/home/prod/system/nginx/html:/usr/share/nginx/html'
-      - '/home/prod/system/lib:/var/lib/nginx'
-      #- '/home/prod/system/nginx.tmpl:/app/nginx.tmpl:ro'
-    ports: 
-      - 80:80
-      - 443:443 
-    #labels:
-    #    - 'com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy'   
-  letsencrypt: 
-    image: 'jrcs/letsencrypt-nginx-proxy-companion:latest'
-    container_name: letsencrypt
-    environment:
-      - DEFAULT_EMAIL=support@ba.be
-      - NGINX_PROXY_CONTAINER=nginx-proxy
-    volumes:
-      - '/home/prod/system/nginx/certs:/etc/nginx/certs'
-      - '/home/prod/system/nginx/vhost.d:/etc/nginx/vhost.d'
-      - '/var/run/docker.sock:/var/run/docker.sock:ro'
-      - '/home/prod/system/nginx/html:/usr/share/nginx/html'
-      - '/home/prod/system/lib:/var/lib/nginx'
-      - '/home/prod/system/nginx.tmpl:/app/nginx.tmpl:rw'
-    volumes_from:
-      - nginx-proxy:rw 
-    depends_on: 
-      - nginx-proxy
+  
            
 #volumes:
  # mariadb_data:
@@ -118,15 +64,3 @@ services:
  #   driver: local 
  # wp_data:
  #   driver: local 
- # letsencrypt_data: 
-#  driver: local 
- # nginx-proxy_data:
-  #  driver: local
-   
-    
-
-    
-
-
-
-    
