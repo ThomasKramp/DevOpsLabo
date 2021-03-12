@@ -1,10 +1,10 @@
-docker run -d --name "db-thomaskramp" -v /var/lib/mysql:/dev/kofer-nietlogisch
+sudo docker run -d --name "db-thomaskramp" -v /data/mariadb:/var/lib/mysq mariadbdocker run -d --name "db-thomaskramp" -v /dev/koffer/nietLogisch:/var/lib/mysql mariadbdocker run -d --name "db-thomaskramp" -v /var/lib/mysql:/dev/kofer-nietlogisch
 
 docker search mariadb
 
 docker pull mariadb
 
-docker run -d --name "wp-thomaskramp" --link db-thomaskramp -p 8080:80 -v /var/www/html:
+docker run -d --name "wp-thomaskramp" --link db-thomaskramp -p 8080:80 -v /data/wordpress:/var/www/html wordpress
 
 docker ps
 

@@ -13,9 +13,12 @@ sudo lvcreate -n <logical-volume-name> -L <disk-grootte>G <v-name>
 			  Jan			10	  Jansens
 ls /dev/mapper/
 
-sudo mount /dev/mapper/<v-name>-<lv-name> /<directory>
-		          Jansens-Jan	      data
 sudo df
+
+mkfs.ext4 /dev/<v-name>/<lv-name>
+	       Jansens	  Jan
+
+sudo mkdir /<directory>
 
 sudo nano /etc/fstab
 # In deze file moet je het volgende toevoegen
@@ -23,3 +26,5 @@ sudo nano /etc/fstab
 		 Jansens-jan	  data
 sudo mount /<dir>
 	    data
+
+sudo lvremove /dev/<v-name>/<lv-name>

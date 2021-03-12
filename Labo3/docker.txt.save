@@ -1,0 +1,14 @@
+docker run -d --name "db-thomaskramp" -v /var/lib/mysql:
+
+docker search mariadb
+
+docker pull mariadb
+
+docker run -d --name "wp-thomaskramp" --link db-thomaskramp -p 8080:80 -v /var/www/html:
+
+docker ps
+
+docker ps -a
+
+wp-thomaskrampdocker inspect db-thomaskramp
+
