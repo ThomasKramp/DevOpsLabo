@@ -1,9 +1,6 @@
-docker run -d --expose 3306 -v /data/mariadb:/var/lib/mysql --name 
-"db-kramp" -e MYSQL_ROOT_PASSWORD=Th0m@s -e MYSQL_DATABASE=wp-db mariadb
+docker run -d --expose 3306 -v /data/mariadb:/var/lib/mysql --name "db-kramp" -e MYSQL_ROOT_PASSWORD=Th0m@s -e MYSQL_DATABASE=wp-db mariadb
 
-docker run -d --name "wp-kramp" -p 8080:80 -v /data/wordpress:/var/www/html
--e WORDPRESS_DB_HOST=db-kramp -e WORDPRESS_DB_PASSWORD=Th0m@s 
--e WORDPRESS_DB_NAME=wp-db -e WORDPRESS_DB_USER=root wordpress
+docker run -d --name "wp-kramp" -p 127.0.0.1:8080:80 -v /data/wordpress:/var/www/html -e WORDPRESS_DB_HOST=db-kramp -e WORDPRESS_DB_PASSWORD=Th0m@s -e WORDPRESS_DB_NAME=wp-db -e WORDPRESS_DB_USER=root wordpress
 
 docker network create maria-word
 docker network connect maria-word db-kramp
