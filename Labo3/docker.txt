@@ -7,6 +7,13 @@ sudo docker run -d --name "wp-kramp" -p 8080:80 -v
 WORDPRESS_DB_PASSWORD=root -e WORDPRESS_DB_NAME=dbthomas -e 
 WORDPRESS_DB_USER=kramp wordpress
 
+docker exec -it db-kramp mysql -u root -p
+password: root
+
+docker network create --attachable wp-network
+docker network connect wp-network db-kramp
+docker network connect wp-network wp-kramp
+
 docker ps
 
 docker ps -a
@@ -16,6 +23,6 @@ docker inspect
 docker logs wp-thomaskramp
 
 3 Containers:
-	mongo
-	jenkins
-	logstash
+	mango (manga)
+	Pokemon Go Map
+	Minecraft
