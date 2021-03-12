@@ -1,0 +1,13 @@
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod a+x /usr/local/bin/docker-compose
+
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml up -d
+docker-compose -f docker-compose.yml start
+docker-compose -f docker-compose.yml restart
+docker-compose -f docker-compose.yml stop
+docker-compose -f docker-compose.yml down
+docker-compose -f docker-compose.yml down --volumes
+
+https://www.youtube.com/watch?v=nMtx6Ij3F8w
