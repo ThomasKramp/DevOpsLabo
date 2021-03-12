@@ -1,11 +1,6 @@
-sudo docker run -d --port 127.0.0.1:3306:3306 -v /data/mariadb:/var/lib/mysq --name "db-kramp" -e MYSQL_ROOT_PASSWORD=root -d mariadb:tag
--e MYSQL_DATABASE=dbthomas
+sudo docker run -d --port 127.0.0.1:3306:3306 -v /data/mariadb:/var/lib/mysq --name "db-kramp" -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=dbthomas -d mariadb:tag
 
-sudo docker run -d --name "wp-kramp" -p 8080:80 -v /data/wordpress:/var/www/html  wordpress
--e WORDPRESS_DB_HOST=db-kramp
--e WORDPRESS_DB_USER=kramp
--e WORDPRESS_DB_PASSWORD=root
--e WORDPRESS_DB_NAME=dbthomas
+sudo docker run -d --name "wp-kramp" -p 8080:80 -v /data/wordpress:/var/www/html -e WORDPRESS_DB_HOST=db-kramp -e WORDPRESS_DB_PASSWORD=root -e WORDPRESS_DB_NAME=dbthomas -e WORDPRESS_DB_USER=kramp wordpress
 
 docker ps
 
