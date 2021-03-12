@@ -1,0 +1,241 @@
+[
+    {
+        "Id": "bcc3977af4011dd386789a31d4a781ebb835aa673af5b70dc5cd13d799dc3af5",
+        "Created": "2021-03-12T19:40:14.792625951Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "mysqld"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 5985,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2021-03-12T20:00:24.333596815Z",
+            "FinishedAt": "2021-03-12T20:00:00.634294877Z"
+        },
+        "Image": "sha256:e27cf5bc24fe85c16570e03c560dfd28661d7ae9aa568603b16b51f7013ba44b",
+        "ResolvConfPath": "/var/lib/docker/containers/bcc3977af4011dd386789a31d4a781ebb835aa673af5b70dc5cd13d799dc3af5/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/bcc3977af4011dd386789a31d4a781ebb835aa673af5b70dc5cd13d799dc3af5/hostname",
+        "HostsPath": "/var/lib/docker/containers/bcc3977af4011dd386789a31d4a781ebb835aa673af5b70dc5cd13d799dc3af5/hosts",
+        "LogPath": "/var/lib/docker/containers/bcc3977af4011dd386789a31d4a781ebb835aa673af5b70dc5cd13d799dc3af5/bcc3977af4011dd386789a31d4a781ebb835aa673af5b70dc5cd13d799dc3af5-json.log",
+        "Name": "/db-kramp",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/data/mariadb:/var/lib/mysql"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/69de72414bde1fa7905ae95e3477114184ebb7e9616466445523db742a72435a-init/diff:/var/lib/docker/overlay2/45a37a71eeec72a64283e32980cec7cd86d06fffdeae108b14fdb344ed3de7f6/diff:/var/lib/docker/overlay2/fd29749a33b6f51791855ebbca48c6670eab3e1e2859b79475aaf59e96157d39/diff:/var/lib/docker/overlay2/ef2e2f17c6cb82f21650aa9f139566572f35dd61167b04d99520ef35365eb6c7/diff:/var/lib/docker/overlay2/43b66a458074f42fe5fa6afce9d8e65499fb6273829015047e9ec38bd0c8b7f4/diff:/var/lib/docker/overlay2/675a3eff42d2b6b3fec5cfbf9803dde3f1557f328c38a5e66d0aa5c041ee90bf/diff:/var/lib/docker/overlay2/ce48208f602e8529d16bb194634a577b75b3ad03d738d32682b1525ff87a0fb9/diff:/var/lib/docker/overlay2/d855b7ebe76908fee6f250cedd09f2c4b8a5c3833b84018f948b2f9f99cc2161/diff:/var/lib/docker/overlay2/711924ead3782c191ef45b982770c0d0236b86f87ed671f51f4ee85fd28475df/diff:/var/lib/docker/overlay2/7a2f1959d5b37f099ee809fc8ac2f05e36159f935deb87618b57c3bb77fcce20/diff:/var/lib/docker/overlay2/c25a8c1395cf1d2bcb94514fe12cd57699cf2a3f683e5a253d7b430855253aea/diff:/var/lib/docker/overlay2/e92c47688aaf0efdd4ae013178df476c9590eb61240a92df3ef1d3312d5bffad/diff:/var/lib/docker/overlay2/e6193b0ab4b5e170a6349094548cb9c6b1874a1200a9c488ce24aa93b6e12003/diff",
+                "MergedDir": "/var/lib/docker/overlay2/69de72414bde1fa7905ae95e3477114184ebb7e9616466445523db742a72435a/merged",
+                "UpperDir": "/var/lib/docker/overlay2/69de72414bde1fa7905ae95e3477114184ebb7e9616466445523db742a72435a/diff",
+                "WorkDir": "/var/lib/docker/overlay2/69de72414bde1fa7905ae95e3477114184ebb7e9616466445523db742a72435a/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/data/mariadb",
+                "Destination": "/var/lib/mysql",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "bcc3977af401",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "3306/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "MYSQL_ROOT_PASSWORD=Th0m@s",
+                "MYSQL_DATABASE=wp-db",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GOSU_VERSION=1.12",
+                "GPG_KEYS=177F4010FE56CA3336300305F1656F24C74CD1D8",
+                "MARIADB_MAJOR=10.5",
+                "MARIADB_VERSION=1:10.5.9+maria~focal"
+            ],
+            "Cmd": [
+                "mysqld"
+            ],
+            "Image": "mariadb",
+            "Volumes": {
+                "/var/lib/mysql": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "91ba41d8db36a40a6f46110c3f980043d642d0c307696b9ede50c840356e5a51",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "3306/tcp": null
+            },
+            "SandboxKey": "/var/run/docker/netns/91ba41d8db36",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "24e74c7d42bde90f2f8ee4ae892f4836a3958321035d9151d2e5632c9b0620a3",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.2",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "02:42:ac:11:00:02",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "e0700173a0d642439f1e743961802a0f09ba754a845b46418f2d11009135e309",
+                    "EndpointID": "24e74c7d42bde90f2f8ee4ae892f4836a3958321035d9151d2e5632c9b0620a3",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:11:00:02",
+                    "DriverOpts": null
+                },
+                "maria-word": {
+                    "IPAMConfig": {},
+                    "Links": null,
+                    "Aliases": [
+                        "bcc3977af401"
+                    ],
+                    "NetworkID": "9e73cab29b989af677d98a46be6f07af8776d705e2078b28e49521b142df85f6",
+                    "EndpointID": "f850a5f07906b2510d6ccf963409f130928dc71bf69423acc6d2274a1ef06d5a",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:12:00:02",
+                    "DriverOpts": {}
+                }
+            }
+        }
+    }
+]

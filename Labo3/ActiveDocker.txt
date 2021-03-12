@@ -1,0 +1,3 @@
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS         PORTS                    NAMES
+c7ca3973b4a5   wordpress   "docker-entrypoint.s…"   20 minutes ago   Up 2 minutes   127.0.0.1:8080->80/tcp   wp-kramp
+bcc3977af401   mariadb     "docker-entrypoint.s…"   22 minutes ago   Up 2 minutes   3306/tcp                 db-kramp
