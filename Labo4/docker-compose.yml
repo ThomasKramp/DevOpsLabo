@@ -23,9 +23,11 @@ services:
       - VIRTUAL_HOST=m.test.be
       - LETSENCRYPT_HOST=m.test.be
       - LETSENCRYPT_EMAIL=j@ba.be
-      - MOODLE_SKIP_INSTALL=yes
+      - VIRTUAL_PORT=8000
     volumes: 
       - /data/moodle/moodle:/bitnami/moodle
+    ports:
+      - 127.0.0.1:8000:80
     networks:
       - moodleNet
     depends_on:
