@@ -1,7 +1,0 @@
-Minecraft:
-
-docker run -d -p 25565:25565 --name minecraft itzg/minecraft-server
-
-https://hub.docker.com/r/itzg/minecraft-server
-
-docker exec -i minecraft rcon-cli

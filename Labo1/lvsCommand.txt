@@ -1,0 +1,5 @@
+thomaskramp@ubuntu:~$ sudo pvcreate /dev/sda
+
+thomaskramp@ubuntu:~$ sudo vgcreate <name> /dev/sda
+
+thomaskramp@ubuntu:~$ sudo lvcreate -n bar -L 5g <name>
