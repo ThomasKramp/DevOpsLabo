@@ -1,0 +1,7 @@
+Pokemon Go Map:
+
+docker run -d -P --name "pokemon" -e "POKEMON_AUTH_SERVICE=ptc" -e "POKEMON_USERNAME=geodudegg12345@gmail.com" -e "POKEMON_PASSWORD=grovyleisthebest12"
+-e "POKEMON_LOCATION=Seattle, WA" -e "POKEMON_STEP_LIMIT=5" -e "POKEMON_GMAPS_KEY=AIzaSyCxVkfBeDd-mBiG-WCzE8481RwBjVqKQPA" ashex/pokemongo-map
+
+https://hub.docker.com/r/ashex/pokemongo-map
+

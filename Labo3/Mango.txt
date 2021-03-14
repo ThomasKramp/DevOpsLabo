@@ -1,0 +1,6 @@
+Mango (Manga Server):
+
+docker run -d --name "manga" --expose 9000 -p 9000:9000 -v ~/mango:/root/mango 
+-v ~/.config/mango:/root/.config/mango kalexling/mango
+
+https://hub.docker.com/r/hkalexling/mango
