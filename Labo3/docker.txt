@@ -9,16 +9,17 @@ docker network create maria-word
 docker network connect maria-word db-kramp
 docker network connect maria-word wp-kramp
 
-docker exec -it db-kramp mysql -u root -p
-password: Th0m@s
-
 docker ps
 
 docker ps -a
 
 docker inspect
 
-docker logs wp-kramp | grep DB
+docker logs wp-thomaskramp
 
 docker rm -rf /data/mariadb/*
 docker rm -rf /data/wordpress/*
+
+https://hub.docker.com/r/ashex/pokemongo-map
+https://hub.docker.com/r/hkalexling/mango
+https://hub.docker.com/r/itzg/minecraft-server
