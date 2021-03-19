@@ -4,7 +4,7 @@ services:
     image: 'mariadb:latest'
     container_name: moodleDB
     environment:
-      - MYSQL_ROOT_PASSWORD=Th0mas
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=moodleDB
     volumes:
       - '/data/moodle/moodleDB:/var/lib/mysql'
@@ -18,7 +18,7 @@ services:
       - MARIADB_HOST=moodleDB
       - MARIADB_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=root
-      - MOODLE_DATABASE_PASSWORD=Th0mas
+      - MOODLE_DATABASE_PASSWORD=root
       - MOODLE_DATABASE_NAME=moodleDB
       - VIRTUAL_HOST=m.test.be
       - LETSENCRYPT_HOST=m.test.be
