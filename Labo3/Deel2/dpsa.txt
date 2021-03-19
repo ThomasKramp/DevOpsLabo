@@ -1,0 +1,6 @@
+CONTAINER ID   IMAGE                   COMMAND                  CREATED          STATUS                     PORTS                                   NAMES
+d13c464d8ae6   ashex/pokemongo-map     "/bin/sh entrypoint.…"   4 minutes ago    Exited (1) 2 minutes ago                                           pokemon
+3332d017fa20   itzg/minecraft-server   "/start"                 21 minutes ago   Up 21 minutes (healthy)    127.0.0.1:25565->25565/tcp, 25575/tcp   minecraft
+8597cf9eaa75   hkalexling/mango        "/usr/local/bin/mango"   46 minutes ago   Up 46 minutes              127.0.0.1:9000->9000/tcp                manga
+c7ca3973b4a5   wordpress               "docker-entrypoint.s…"   2 days ago       Exited (0) 2 days ago                                              wp-kramp
+bcc3977af401   mariadb                 "docker-entrypoint.s…"   2 days ago       Exited (0) 2 days ago                                              db-kramp
