@@ -8,8 +8,8 @@ services:
       - MYSQL_DATABASE=moodleDB
     volumes:
       - '/data/moodle/moodleDB:/var/lib/mysql'
-    networks:
-      - moodleNet
+    # networks:
+    #   - moodleNet
       
   # moodle:
   #   image: 'bitnami/moodle:3'
