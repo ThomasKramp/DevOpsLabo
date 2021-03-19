@@ -1,60 +1,63 @@
 version: '2'
 services:
-  mdl-db:
+  moodleDB:
     image: 'mariadb:latest'
-    container_name: mdl-kramp
+    container_name: moodleDB
     environment:
       - MYSQL_ROOT_PASSWORD=Th0m@s
+      - MYSQL_DATABASE=moodleDB
     volumes:
-      - '/home/prod/moodledb_data:/var/lib/mysql'
+      - '/data/moodle/moodleDB:/var/lib/mysql'
       
   moodle:
     image: 'bitnami/moodle:3'
-    container_name: db-kramp
+    container_name: moodle
     environment:
-      - MARIADB_HOST=db-kramp
+      - MARIADB_HOST=thomaskramp
       - MARIADB_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=root
       - MOODLE_DATABASE_PASSWORD=Th0m@s
-      - MOODLE_DATABASE_NAME=mdl-db
+      - MOODLE_DATABASE_NAME=moodleDB
       - VIRTUAL_HOST=m.test.be
-      #- VIRTUAL_PORT=8001
+      - VIRTUAL_PORT=8000
       - LETSENCRYPT_HOST=m.test.be
       - LETSENCRYPT_EMAIL=j@ba.be
       - MOODLE_SKIP_INSTALL=yes 
     volumes: 
-      - /home/prod/moodle_data:/bitnami/moodle
-    #ports:
-    #  - 8001:80
+      - /data/moodle/moodle:/bitnami/moodle
+    ports:
+      - 127.0.0.1:8000:80
+    depends_on:
+      - moodleDB  
 
-  wp-db:
+  wordpressDB:
     image: 'mariadb:latest'
-    container_name: db-kramp
+    container_name: wordpressDB
     environment:
       - MYSQL_ROOT_PASSWORD=Th0m@s
+      - MYSQL_DATABASE=wordpressDB
     volumes:
-      - '/home/prod/wpdb_data/:/var/lib/mysql'
+      - '/home/wordpress/wordpressDB/:/var/lib/mysql'
   
   wordpress:
     image: 'wordpress:latest'
-    container_name: wp-kramp
+    container_name: wordpress
     environment:
-      - WORDPRESS_DB_HOST=db-kramp
+      - WORDPRESS_DB_HOST=thomaskramp
       - WORDPRESS_DB_USER=root
       - WORDPRESS_DB_PASSWORD=Th0m@s
-      - WORDPRESS_DB_NAME=wp-db 
+      - WORDPRESS_DB_NAME=wordpressDB 
       - VIRTUAL_HOST=test.be,www.test.be
       - LETSENCRYPT_HOST=test.be,www.test.be
       - LETSENCRYPT_EMAIL="j@ba.be"
-      #- VIRTUAL_PORT=8000  
+      - VIRTUAL_PORT=8080  
     volumes:
-      - '/home/prod/wp_data:/var/www/html'
-    #ports: 
-    #  - 8000:80
+      - '/home/wordpress/wordpress:/var/www/html'
+    ports: 
+      - 127.0.0.1:8080:80
     depends_on:
-      - wp-db      
-  
-           
+      - wordpressDB      
+    
 #volumes:
  # mariadb_data:
  #   driver: local
