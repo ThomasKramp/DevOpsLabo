@@ -12,7 +12,7 @@ services:
       - moodleNet
       
   moodle:
-    image: 'bitnami/moodle:latest'
+    image: 'bitnami/moodle:3'
     container_name: moodle
     environment:
       - MARIADB_HOST=moodleDB
