@@ -27,7 +27,7 @@ services:
     volumes: 
       - /data/moodle/moodle:/bitnami/moodle
     ports:
-      - 8000:80
+      - 127.0.0.1:8000:80
     networks:
       - moodleNet
     depends_on:
