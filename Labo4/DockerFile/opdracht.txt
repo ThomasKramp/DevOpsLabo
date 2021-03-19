@@ -1,0 +1,7 @@
+Een ubuntu 20.04 container
+Bevat de paketten van netcat en minecraft
+Heeft een apache webserver die
+	Start met een index.html pagina
+	www.disney.com opent bij een meta refresh
+	een game.html pagina bevat die de onderstaande link verwijst
+		http://breakout.enclavegames.com/lesson10.html

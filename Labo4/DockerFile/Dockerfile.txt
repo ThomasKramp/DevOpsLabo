@@ -1,0 +1,5 @@
+From ubuntu:20.04
+copy
+
+sudo sed -i -e '\@</head>@i\<meta http-equiv="refresh" content="30; URL=http://www.disney.com">' index.html
+sudo wget http://breakout.enclavegames.com/lesson10.html -O game.html
