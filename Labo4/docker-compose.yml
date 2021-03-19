@@ -26,7 +26,7 @@ services:
     volumes: 
       - /data/moodle/moodle:/bitnami/moodle
     ports:
-      - 127.0.0.1:8000:80
+      - 8000:80
     depends_on:
       - moodleDB  
 
@@ -58,12 +58,12 @@ services:
     depends_on:
       - wordpressDB      
     
-#volumes:
- # mariadb_data:
- #   driver: local
- # moodle_data:
- #   driver: local
- # wpdb_data:
- #   driver: local 
- # wp_data:
- #   driver: local 
+volumes:
+  moodleDB:
+    driver: local
+  moodle:
+    driver: local
+  wordpressDB:
+    driver: local 
+  wordpress:
+    driver: local 
