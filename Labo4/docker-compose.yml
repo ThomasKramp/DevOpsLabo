@@ -64,8 +64,9 @@ services:
       - wordpressDB 
 
 networks:
+  #network_mode: "bridge"
   wordpressNet:
-    driver: wordpressDriver
+    driver: bridge
   #moodleNet:
     #driver: moodleDriver
     
