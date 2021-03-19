@@ -52,8 +52,6 @@ services:
       - '/home/wordpress/wordpress:/var/www/html'
     ports: 
       - 127.0.0.1:8080:80
-    link:
-      - 
     depends_on:
       - wordpressDB    
     
