@@ -30,16 +30,16 @@ services:
     depends_on:
       - moodleDB
 
-  # wordpressDB:
-  #   image: 'mariadb:latest'
-  #   container_name: wordpressDB
-  #   environment:
-  #     - MYSQL_ROOT_PASSWORD=Th0m@s
-  #     - MYSQL_DATABASE=wordpressDB
-  #   volumes:
-  #     - '/home/wordpress/wordpressDB/:/var/lib/mysql'
-  #   networks:
-  #     - wordpressNet
+  wordpressDB:
+    image: 'mariadb:latest'
+    container_name: wordpressDB
+    environment:
+      - MYSQL_ROOT_PASSWORD=Th0m@s
+      - MYSQL_DATABASE=wordpressDB
+    volumes:
+      - '/home/wordpress/wordpressDB/:/var/lib/mysql'
+    networks:
+      - wordpressNet
   
   wordpress:
     image: 'wordpress:latest'
@@ -56,8 +56,8 @@ services:
       - 127.0.0.1:8080:80
     networks:
       - wordpressNet
-    # depends_on:
-    #   - wordpressDB 
+    depends_on:
+      - wordpressDB 
 
 networks:
   moodleNet:
