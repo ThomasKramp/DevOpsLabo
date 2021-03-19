@@ -39,8 +39,8 @@ services:
       - MYSQL_DATABASE=wordpressDB
     volumes:
       - '/home/wordpress/wordpressDB/:/var/lib/mysql'
-    #networks:
-      #- wordpressNet
+    networks:
+      - wordpressNet
   
   wordpress:
     image: 'wordpress:latest'
@@ -53,21 +53,21 @@ services:
       - VIRTUAL_HOST=test.be,www.test.be
       - LETSENCRYPT_HOST=test.be,www.test.be
       - LETSENCRYPT_EMAIL="j@ba.be"
-      - VIRTUAL_PORT=8081  
+      - VIRTUAL_PORT=8080  
     volumes:
       - '/home/wordpress/wordpress:/var/www/html'
     ports: 
-      - 127.0.0.1:8081:80
-    #networks:
-      #- wordpressNet
+      - 127.0.0.1:8080:80
+    networks:
+      - wordpressNet
     depends_on:
       - wordpressDB 
 
-#networks:
+networks:
+  wordpressNet:
+    driver: wordpressDriver
   #moodleNet:
     #driver: moodleDriver
-  #wordpressNet:
-    #driver: wordpressDriver
     
 volumes:
   moodleDB:
