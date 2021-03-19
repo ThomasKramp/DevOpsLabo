@@ -8,8 +8,8 @@ services:
       - MYSQL_DATABASE=moodleDB
     volumes:
       - '/data/moodle/moodleDB:/var/lib/mysql'
-    #networks:
-      #- moodleNet
+    networks:
+      - moodleNet
       
   moodle:
     image: 'bitnami/moodle:3'
@@ -26,8 +26,8 @@ services:
       - MOODLE_SKIP_INSTALL=yes
     volumes: 
       - /data/moodle/moodle:/bitnami/moodle
-    #networks:
-      #- moodleNet
+    networks:
+      - moodleNet
     depends_on:
       - moodleDB
 
@@ -64,11 +64,10 @@ services:
       - wordpressDB 
 
 networks:
-  #network_mode: "bridge"
+  moodleNet:
+    driver: bridge
   wordpressNet:
     driver: bridge
-  #moodleNet:
-    #driver: moodleDriver
     
 volumes:
   moodleDB:
