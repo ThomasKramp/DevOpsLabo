@@ -63,11 +63,11 @@ services:
     depends_on:
       - wordpressDB 
 
-networks:
-  moodleNet:
-    driver: moodleDriver
-  wordpressNet:
-    driver: wordpressDriver
+#networks:
+  #moodleNet:
+    #driver: moodleDriver
+  #wordpressNet:
+    #driver: wordpressDriver
     
 volumes:
   moodleDB:
