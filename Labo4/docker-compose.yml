@@ -24,8 +24,11 @@ services:
       - LETSENCRYPT_HOST=m.test.be
       - LETSENCRYPT_EMAIL=j@ba.be
       - MOODLE_SKIP_INSTALL=yes 
+      - VIRTUAL_PORT=8080  
     volumes: 
       - /data/moodle/moodle:/bitnami/moodle
+    ports: 
+      - 8080:80
     #networks:
       #- moodleNet
     depends_on:
@@ -53,11 +56,11 @@ services:
       - VIRTUAL_HOST=test.be,www.test.be
       - LETSENCRYPT_HOST=test.be,www.test.be
       - LETSENCRYPT_EMAIL="j@ba.be"
-      - VIRTUAL_PORT=8080  
+      - VIRTUAL_PORT=8081  
     volumes:
       - '/home/wordpress/wordpress:/var/www/html'
     ports: 
-      - 127.0.0.1:8080:80
+      - 127.0.0.1:8081:80
     #networks:
       #- wordpressNet
     depends_on:
