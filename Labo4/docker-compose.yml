@@ -8,8 +8,8 @@ services:
       - MYSQL_DATABASE=moodleDB
     volumes:
       - '/data/moodle/moodleDB:/var/lib/mysql'
-    networks:
-      - moodleNet
+    #networks:
+      #- moodleNet
       
   moodle:
     image: 'bitnami/moodle:3'
@@ -28,8 +28,8 @@ services:
       - /data/moodle/moodle:/bitnami/moodle
     ports:
       - 127.0.0.1:8000:80
-    networks:
-      - moodleNet
+    #networks:
+      #- moodleNet
     depends_on:
       - moodleDB
 
@@ -66,8 +66,8 @@ services:
       - wordpressDB 
 
 networks:
-  moodleNet:
-    driver: bridge
+  #moodleNet:
+    #driver: bridge
   wordpressNet:
     driver: bridge
     
