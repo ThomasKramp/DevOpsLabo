@@ -56,8 +56,8 @@ services:
       - 127.0.0.1:8080:80
     networks:
       - wordpressNet
-    depends_on:
-      - wordpressDB 
+    # depends_on:
+    #   - wordpressDB 
 
 networks:
   moodleNet:
