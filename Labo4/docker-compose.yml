@@ -4,7 +4,7 @@ services:
     image: 'mariadb:latest'
     container_name: moodleDB
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=Th0m@s
       - MYSQL_DATABASE=moodleDB
     volumes:
       - '/data/moodle/moodleDB:/var/lib/mysql'
@@ -15,11 +15,11 @@ services:
     image: 'bitnami/moodle:3'
     container_name: moodle
     environment:
-      - MARIADB_HOST=wordpressDB
+      - MARIADB_HOST=moodleDB
       - MARIADB_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=root
       - MOODLE_DATABASE_PASSWORD=Th0m@s
-      - MOODLE_DATABASE_NAME=wordpressDB
+      - MOODLE_DATABASE_NAME=moodleDB
       - VIRTUAL_PORT=8000
     volumes: 
       - /data/moodle/moodle:/bitnami/moodle
@@ -28,7 +28,7 @@ services:
     networks:
       - moodleNet
     depends_on:
-      - wordpressDB
+      - moodleDB
 
   wordpressDB:
     image: 'mariadb:latest'
@@ -37,27 +37,27 @@ services:
       - MYSQL_ROOT_PASSWORD=Th0m@s
       - MYSQL_DATABASE=wordpressDB
     volumes:
-      - '/home/wordpress/wordpressDB/:/var/lib/mysql'
+      - '/home/wordpress/wordpressDB:/var/lib/mysql'
     networks:
       - wordpressNet
   
-  # wordpress:
-  #   image: 'wordpress:latest'
-  #   container_name: wordpress
-  #   environment:
-  #     - WORDPRESS_DB_HOST=wordpressDB
-  #     - WORDPRESS_DB_USER=root
-  #     - WORDPRESS_DB_PASSWORD=Th0m@s
-  #     - WORDPRESS_DB_NAME=wordpressDB
-  #     - VIRTUAL_PORT=8080  
-  #   volumes:
-  #     - '/home/wordpress/wordpress:/var/www/html'
-  #   ports: 
-  #     - 127.0.0.1:8080:80
-  #   networks:
-  #     - wordpressNet
-  #   depends_on:
-  #     - wordpressDB 
+  wordpress:
+    image: 'wordpress:latest'
+    container_name: wordpress
+    environment:
+      - WORDPRESS_DB_HOST=wordpressDB
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=Th0m@s
+      - WORDPRESS_DB_NAME=wordpressDB
+      - VIRTUAL_PORT=8080  
+    volumes:
+      - '/home/wordpress/wordpress:/var/www/html'
+    ports: 
+      - 127.0.0.1:8080:80
+    networks:
+      - wordpressNet
+    depends_on:
+      - wordpressDB 
 
 networks:
   moodleNet:
