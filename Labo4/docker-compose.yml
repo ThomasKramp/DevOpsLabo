@@ -8,27 +8,27 @@ services:
       - MYSQL_DATABASE=moodleDB
     volumes:
       - '/data/moodle/moodleDB:/var/lib/mysql'
-    # networks:
-    #   - moodleNet
+    networks:
+      - moodleNet
       
-  # moodle:
-  #   image: 'bitnami/moodle:3'
-  #   container_name: moodle
-  #   environment:
-  #     - MARIADB_HOST=moodleDB
-  #     - MARIADB_PORT_NUMBER=3306
-  #     - MOODLE_DATABASE_USER=root
-  #     - MOODLE_DATABASE_PASSWORD=root
-  #     - MOODLE_DATABASE_NAME=moodleDB
-  #     - VIRTUAL_PORT=8000
-  #   volumes: 
-  #     - /data/moodle/moodle:/bitnami/moodle
-  #   ports:
-  #     - 127.0.0.1:8000:80
-  #   networks:
-  #     - moodleNet
-  #   depends_on:
-  #     - moodleDB
+  moodle:
+    image: 'bitnami/moodle:3'
+    container_name: moodle
+    environment:
+      - MARIADB_HOST=moodleDB
+      - MARIADB_PORT_NUMBER=3306
+      - MOODLE_DATABASE_USER=root
+      - MOODLE_DATABASE_PASSWORD=root
+      - MOODLE_DATABASE_NAME=moodleDB
+      - VIRTUAL_PORT=8000
+    volumes: 
+      - /data/moodle/moodle:/bitnami/moodle
+    ports:
+      - 127.0.0.1:8000:80
+    networks:
+      - moodleNet
+    depends_on:
+      - moodleDB
 
   wordpressDB:
     image: 'mariadb:latest'
