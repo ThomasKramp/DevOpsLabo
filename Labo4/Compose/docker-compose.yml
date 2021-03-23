@@ -5,6 +5,7 @@ services:
     container_name: moodleDB
     environment:
       #- ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_USER=root
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=moodleDB
     volumes:
