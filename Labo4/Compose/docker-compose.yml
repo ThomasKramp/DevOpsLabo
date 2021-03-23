@@ -4,7 +4,7 @@ services:
     image: 'bitnami/mariadb:latest'
     container_name: moodleDB
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
+      #- ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=moodleDB
     volumes:
@@ -16,7 +16,7 @@ services:
     image: 'bitnami/moodle:3'
     container_name: moodle
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
+      #- ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_HOST=moodleDB
       - MARIADB_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=root
@@ -32,47 +32,47 @@ services:
     depends_on:
       - moodleDB
 
-  wordpressDB:
-    image: 'mariadb:latest'
-    container_name: wordpressDB
-    environment:
-      - MYSQL_ROOT_PASSWORD=Th0m@s
-      - MYSQL_DATABASE=wordpressDB
-    volumes:
-      - '/home/wordpress/wordpressDB:/var/lib/mysql'
-    networks:
-      - wordpressNet
+  # wordpressDB:
+  #   image: 'mariadb:latest'
+  #   container_name: wordpressDB
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=Th0m@s
+  #     - MYSQL_DATABASE=wordpressDB
+  #   volumes:
+  #     - '/home/wordpress/wordpressDB:/var/lib/mysql'
+  #   networks:
+  #     - wordpressNet
   
-  wordpress:
-    image: 'wordpress:latest'
-    container_name: wordpress
-    environment:
-      - WORDPRESS_DB_HOST=wordpressDB
-      - WORDPRESS_DB_USER=root
-      - WORDPRESS_DB_PASSWORD=Th0m@s
-      - WORDPRESS_DB_NAME=wordpressDB
-      - VIRTUAL_PORT=8080  
-    volumes:
-      - '/home/wordpress/wordpress:/var/www/html'
-    ports: 
-      - 127.0.0.1:8080:80
-    networks:
-      - wordpressNet
-    depends_on:
-      - wordpressDB 
+  # wordpress:
+  #   image: 'wordpress:latest'
+  #   container_name: wordpress
+  #   environment:
+  #     - WORDPRESS_DB_HOST=wordpressDB
+  #     - WORDPRESS_DB_USER=root
+  #     - WORDPRESS_DB_PASSWORD=Th0m@s
+  #     - WORDPRESS_DB_NAME=wordpressDB
+  #     - VIRTUAL_PORT=8080  
+  #   volumes:
+  #     - '/home/wordpress/wordpress:/var/www/html'
+  #   ports: 
+  #     - 127.0.0.1:8080:80
+  #   networks:
+  #     - wordpressNet
+  #   depends_on:
+  #     - wordpressDB 
 
 networks:
   moodleNet:
     driver: bridge
-  wordpressNet:
-    driver: bridge
+  # wordpressNet:
+  #   driver: bridge
     
 volumes:
   moodleDB:
     driver: local
   moodle:
     driver: local
-  wordpressDB:
-    driver: local 
-  wordpress:
-    driver: local 
+  # wordpressDB:
+  #   driver: local 
+  # wordpress:
+  #   driver: local 
