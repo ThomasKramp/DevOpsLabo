@@ -1,18 +1,13 @@
 version: '2'
 services:
   moodleDB:
-    image: 'bitnami/mariadb:latest'
+    image: 'mariadb:latest'
     container_name: moodleDB
     environment:
-      - MARIADB_USER=root
-      - MARIADB_PASSWORD=root
-      - MARIADB_DATABASE=moodleDB
-      - MARIADB_ROOT_PASSWORD=root
-      - VIRTUAL_PORT=3306
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=moodleDB
     volumes:
-      - '/data/moodle/moodleDB:/bitnami/mariadb'
-    ports:
-      - 127.0.0.1:3306:3306
+      - '/data/moodle/moodleDB:/var/lib/mysql'
     networks:
       - moodleNet
       
