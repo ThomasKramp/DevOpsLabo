@@ -1,13 +1,13 @@
 version: '2'
 services:
   moodleDB:
-    image: 'mariadb:latest'
+    image: 'mariadb:bitnami/latest'
     container_name: moodleDB
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=moodleDB
     volumes:
-      - '/data/moodle/moodleDB:/var/lib/mysql'
+      - '/data/moodle/moodleDB:/bitnami/mariadb'
     networks:
       - moodleNet
       
