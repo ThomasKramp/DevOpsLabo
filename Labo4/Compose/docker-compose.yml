@@ -17,16 +17,16 @@ services:
     container_name: moodle
     environment:
       #- ALLOW_EMPTY_PASSWORD=yes
-      - MYSQL_CLIENT_DATABASE_USER=root
-      - MYSQL_CLIENT_DATABASE_PASSWORD=root
-      - MYSQL_CLIENT_DATABASE_NAME=moodleDB
-      - MYSQL_CLIENT_DATABASE_HOST=moodleDB
-      - MYSQL_CLIENT_DATABASE_PORT_NUMBER=3306
-      - VIRTUAL_PORT=8000
+      - MOODLE_DATABASE_USER=root
+      - MOODLE_DATABASE_PASSWORD=root
+      - MOODLE_DATABASE_NAME=moodleDB
+      - MOODLE_DATABASE_HOST=moodleDB
+      - MOODLE_DATABASE_PORT_NUMBER=3306
+      #- VIRTUAL_PORT=8000
     volumes: 
       - /data/moodle/moodle:/bitnami/moodle
-    ports:
-      - 127.0.0.1:8000:80
+    # ports:
+    #   - 127.0.0.1:8000:80
     networks:
       - moodleNet
     depends_on:
