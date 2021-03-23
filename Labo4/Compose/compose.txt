@@ -12,4 +12,4 @@ docker-compose -f docker-compose.yml down --volumes
 
 https://www.youtube.com/watch?v=nMtx6Ij3F8w
 
-docker-compose -f ~/Documents/Repo/Labo4/docker-compose.yml up -d
+docker-compose -f ~/Documents/Repo/Labo4/Compose/docker-compose.yml up -d
