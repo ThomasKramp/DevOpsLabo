@@ -8,8 +8,11 @@ services:
       - MARIADB_PASSWORD=root
       - MARIADB_DATABASE=moodleDB
       - MARIADB_ROOT_PASSWORD=root
+      - VIRTUAL_PORT=3306
     volumes:
       - '/data/moodle/moodleDB:/bitnami/mariadb'
+    ports:
+      - 127.0.0.1:3306:3306
     networks:
       - moodleNet
       
