@@ -1,14 +1,15 @@
 version: '2'
 services:
   moodleDB:
-    image: 'mariadb:latest'
+    image: 'bitnami/mariadb:latest'
     container_name: moodleDB
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=moodleDB
+      #- ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_ROOT_USER=root
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=moodleDB
     volumes:
-      - '/data/moodle/moodleDB:/var/lib/mysql'
+      - '/data/moodle/moodleDB:/bitnami/mariadb'
     networks:
       - moodleNet
       
@@ -16,7 +17,7 @@ services:
     image: 'bitnami/moodle:3'
     container_name: moodle
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
+      #- ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_HOST=moodleDB
       - MARIADB_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=root
