@@ -9,7 +9,7 @@ services:
       - MARIADB_DATABASE=moodleDB
       - MARIADB_ROOT_PASSWORD=root
     volumes:
-      - '/data/moodle/moodleDB:bitnami/mariadb'
+      - '/data/moodle/moodleDB:/bitnami/mariadb'
     networks:
       - moodleNet
       
