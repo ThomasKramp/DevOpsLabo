@@ -1,7 +1,7 @@
 version: '2'
 services:
   moodleDB:
-    image: 'mariadb:bitnami/latest'
+    image: 'bitnami/mariadb:latest'
     container_name: moodleDB
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
