@@ -10,12 +10,12 @@ FROM ubuntu:20.04
 MAINTAINER Thomas Kramp <s115472@ap.be>
 
 RUN apt-get -y update
-RUN apt-get -y install netcat
+RUN apt-get install -y netcat
+RUN apt-get install -y mc
 RUN apt-get install -y tzdata 
 RUN apt-get install -y apache2 
 RUN apt-get install -y apache2-utils
 RUN apt install -y curl
-RUN apt-get -y install mc
 
 RUN echo '<html lang="en"><head><meta http-equiv="refresh" content="30; URL=http://www.disney.com"></head><body></body></html>' > index.html
 COPY index.html /var/www/html/index.html 
