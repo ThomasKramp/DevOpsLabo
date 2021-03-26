@@ -17,8 +17,10 @@ RUN apt-get install -y apache2
 RUN apt-get install -y apache2-utils
 RUN apt install -y curl
 
+RUN touch index.html
 RUN echo '<html lang="en"><head><meta http-equiv="refresh" content="30; URL=http://www.disney.com"></head><body></body></html>' > index.html
 COPY index.html /var/www/html/index.html 
+RUN touch game.html
 RUN curl http://breakout.enclavegames.com/lesson10.html > game.html
 COPY game.html /var/www/html/game.html
 RUN apt-get clean
