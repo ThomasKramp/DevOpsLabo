@@ -1,5 +1,8 @@
 # https://github.com/wsargent/docker-cheat-sheet#dockerfile
 # https://docs.docker.com/engine/reference/builder/
+
+# docker build -t webs:1.0 ~/data/docker-file/
+
 # Get ubuntu image
 FROM ubuntu:20.04
 
