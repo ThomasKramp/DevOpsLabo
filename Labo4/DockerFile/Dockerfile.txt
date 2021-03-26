@@ -1,5 +1,30 @@
-From ubuntu:20.04
-copy
+# https://github.com/wsargent/docker-cheat-sheet#dockerfile
+# https://docs.docker.com/engine/reference/builder/
+# Get ubuntu image
+FROM unbuntu:20.04
 
-sudo sed -i -e '\@</head>@i\<meta http-equiv="refresh" content="30; URL=http://www.disney.com">' index.html
-sudo wget http://breakout.enclavegames.com/lesson10.html -O game.html
+# Give my contact data
+MAINTAINER Thomas Kramp <s115472@ap.be>
+
+# Haalt het netcat packet op
+RUN docker pull netcat
+COPY ?
+CMD ["echo", "Pulled netcat"]
+
+# Haalt het minecraft packet op
+RUN docker pull minecraft
+CMD ["echo", "Pulled minecraft"]
+
+# Voegt een meta refresh toe aan de index.html file
+RUN sudo sed -i -e '\@</head>@i\<meta http-equiv="refresh" content="30; URL=http://www.disney.com">' index.html
+CMD ["echo", "Inserted meta Refresh"]
+
+# Voegt game.html file toe
+RUN sudo wget http://breakout.enclavegames.com/lesson10.html -O game.html
+CMD ["echo", "Added game.html"]
+
+# Start de apache server
+# https://www.cyberciti.biz/faq/star-stop-restart-apache2-webserver/
+EXPOSE 80
+RUN systemctl start apache2.service
+CMD ["echo", "Started apache server"]
