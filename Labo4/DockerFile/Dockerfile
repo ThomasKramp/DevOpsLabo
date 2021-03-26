@@ -2,6 +2,7 @@
 # https://docs.docker.com/engine/reference/builder/
 
 # docker build -t devops/1.0 .
+# docker run --name d-file devops/1.0:latest
 
 # Get ubuntu image
 FROM ubuntu:20.04
