@@ -1,26 +1,26 @@
 # https://github.com/wsargent/docker-cheat-sheet#dockerfile
 # https://docs.docker.com/engine/reference/builder/
 # Get ubuntu image
-FROM unbuntu:20.04
+FROM ubuntu:20.04
 
 # Give my contact data
 MAINTAINER Thomas Kramp <s115472@ap.be>
 
 # Haalt het netcat packet op
-RUN docker pull netcat
-COPY ?
+#RUN docker pull netcat
+# COPY ?
 CMD ["echo", "Pulled netcat"]
 
 # Haalt het minecraft packet op
-RUN docker pull minecraft
+# RUN docker pull minecraft
 CMD ["echo", "Pulled minecraft"]
 
 # Voegt een meta refresh toe aan de index.html file
-RUN sudo sed -i -e '\@</head>@i\<meta http-equiv="refresh" content="30; URL=http://www.disney.com">' index.html
+RUN sed -i -e '\@</head>@i\<meta http-equiv="refresh" content="30; URL=http://www.disney.com">' ~/var/www/html/index.html
 CMD ["echo", "Inserted meta Refresh"]
 
 # Voegt game.html file toe
-RUN sudo wget http://breakout.enclavegames.com/lesson10.html -O game.html
+RUN wget http://breakout.enclavegames.com/lesson10.html -O ~/var/www/html/game.html
 CMD ["echo", "Added game.html"]
 
 # Start de apache server
