@@ -1,34 +1,21 @@
 # https://github.com/wsargent/docker-cheat-sheet#dockerfile
 # https://docs.docker.com/engine/reference/builder/
-
-# docker build -t webs:1.0 ~/data/docker-file/
-
 # Get ubuntu image
 FROM ubuntu:20.04
 
 # Give my contact data
 MAINTAINER Thomas Kramp <s115472@ap.be>
 
-# Haalt het netcat packet op
-#RUN docker pull netcat
-# COPY ?
-CMD ["echo", "Pulled netcat"]
+RUN apt-get -y update 
+RUN apt-get -y install netcat
+RUN apt-get install -y tzdata 
+RUN apt-get install -y apache2 
+RUN apt-get install -y apache2-utils
 
-# Haalt het minecraft packet op
-# RUN docker pull minecraft
-CMD ["echo", "Pulled minecraft"]
+#RUN apt-get -y install mc
+COPY index.html /var/www/html/index.html 
+COPY game.html /var/www/html/game.html
+RUN apt-get clean
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND@"]
 
-# Voegt een meta refresh toe aan de index.html file
-# RUN sed -i -e '\@</head>@i\<meta http-equiv="refresh" content="30; URL=http://www.disney.com">' ~/var/www/html/index.html
-CMD ["echo", "Inserted meta Refresh"]
-
-# Voegt game.html file toe
-# RUN wget http://breakout.enclavegames.com/lesson10.html -O ~/var/www/html/game.html
-CMD ["wget http://breakout.enclavegames.com/lesson10.html", "~/var/www/html/game.html"]
-CMD ["echo", "Added game.html"]
-
-# Start de apache server
-# https://www.cyberciti.biz/faq/star-stop-restart-apache2-webserver/
-EXPOSE 80
-RUN firefox http://localhost
-CMD ["echo", "Started apache server"]
+EXPOSE 80 
