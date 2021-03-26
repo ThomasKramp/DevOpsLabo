@@ -15,7 +15,7 @@ RUN apt-get install -y mc
 RUN apt-get install -y tzdata 
 RUN apt-get install -y apache2 
 RUN apt-get install -y apache2-utils
-RUN apt install -y curl
+RUN apt-get install -y curl
 
 RUN touch index.html
 RUN echo '<html lang="en"><head><meta http-equiv="refresh" content="30; URL=http://www.disney.com"></head><body></body></html>' > index.html
