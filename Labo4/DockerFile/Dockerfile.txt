@@ -26,5 +26,5 @@ CMD ["echo", "Added game.html"]
 # Start de apache server
 # https://www.cyberciti.biz/faq/star-stop-restart-apache2-webserver/
 EXPOSE 80
-RUN systemctl start apache2.service
+RUN firefox http://localhost
 CMD ["echo", "Started apache server"]
