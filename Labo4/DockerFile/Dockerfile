@@ -16,11 +16,12 @@ CMD ["echo", "Pulled netcat"]
 CMD ["echo", "Pulled minecraft"]
 
 # Voegt een meta refresh toe aan de index.html file
-RUN sed -i -e '\@</head>@i\<meta http-equiv="refresh" content="30; URL=http://www.disney.com">' ~/var/www/html/index.html
+# RUN sed -i -e '\@</head>@i\<meta http-equiv="refresh" content="30; URL=http://www.disney.com">' ~/var/www/html/index.html
 CMD ["echo", "Inserted meta Refresh"]
 
 # Voegt game.html file toe
-RUN wget http://breakout.enclavegames.com/lesson10.html -O ~/var/www/html/game.html
+# RUN wget http://breakout.enclavegames.com/lesson10.html -O ~/var/www/html/game.html
+CMD ["wget http://breakout.enclavegames.com/lesson10.html", "~/var/www/html/game.html"]
 CMD ["echo", "Added game.html"]
 
 # Start de apache server
