@@ -15,6 +15,7 @@ RUN apt-get install -y netcat
 RUN apt-get install -y tzdata 
 RUN apt-get install -y apache2 
 RUN apt-get install -y apache2-utils
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN apt-get install -y curl
 RUN apt-get install -y mc
 
