@@ -1,8 +1,8 @@
 # https://github.com/wsargent/docker-cheat-sheet#dockerfile
 # https://docs.docker.com/engine/reference/builder/
 
-# docker build -t devops/1.0 .
-# docker run --name d-file devops/1.0:latest
+# docker build -t devops4 .
+# docker run -p 8080:80 --name devops4 devops4
 
 # Get ubuntu image
 FROM ubuntu:20.04
@@ -14,7 +14,6 @@ RUN apt-get -y update
 RUN apt-get install -y netcat
 RUN apt-get install -y tzdata 
 RUN apt-get install -y apache2 
-RUN apt-get install -y apache2-utils
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN apt-get install -y curl
 RUN apt-get install -y mc
@@ -29,3 +28,4 @@ RUN apt-get clean
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND@"]
 
 EXPOSE 80
+
