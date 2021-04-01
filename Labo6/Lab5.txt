@@ -1,0 +1,114 @@
+Trends in Cybersecurity & Privacy:
+	De cloud staat in America
+	Europa is op internet gezien afhankelijk van America
+	Hierdoor is alle data bij grote bedrijven
+	COSIC app gaat daar tegen in
+	Zet een database locaal op het apparaat idpv van de
+		grote bedrijven (sociale media)
+	
+De Trend naar Cloud First Srategy:
+	De locale tui database was bijna gefrituurd
+		(Hun locale database was niet actief aangezien de servers oververhit waren)
+	Lokaal zou je alleen de service laten draaien
+	De database kan je op de cloud zetten
+		Is goedkopen en gespecialiseerde IT mensen zorgen ervoor dat jouw datacenter blijft draaien
+		De beveiliging is beter (minder kans om gehacked te worden) en gespecialiseerde mensen om het 
+			op te lossen indien er iets mis gaat (wat waarschijnlijk ooit zal gebeuren)
+		Je moet vertrouwen leggen in een ander bedrijf (als zij neer gaan dan loopt het niet goed
+			af met jouw server)
+		Eerst testen voordat je de SaaS (Externe datacenter) gaat gebruiken
+		Hybrid is de beste keuze (beste van bijde werelden)
+
+The Multi Cloud Skills Gap:
+	Hybrid Platform gaat nooit uitsterven, maar externe services gaan complexer worden.
+		Dus hybrid ook
+	Ransom Ware (is slecht) groeit (Alles moet sneller gaan, mensen zijn ongeduldig)
+	Shadow IT-bestaat (is een probleem)
+	Er worden veel verschillende services in een bedrijf/project gebruikt
+		Ja gaat moeten zamenwerken met verschillende mensen om iets werkend te krijgen
+	Het is onmogelijk om alles in een project te weten.
+		Je gaat een roadmap moeten maken met andere mensen die expertise hebben met dingen
+			die hij niet hebt
+		Expertise is tijdelijk
+	Er wordt niet meer gevraagd naar een product maar naar een zekere uikomst (buisness outcom)
+
+Cybersecurity Act on your IIoT devices or cloud purchases and detection of IoT security in your networks:
+	Selchte en onduidelijke presentatie
+	Tweede helft een verkoop van hun product
+		Groot deel van de presentatie was een toturial van de applicatie met een gratis trail die
+			je kan aanvragen
+		Gaat alle ip devices vinden (inclusief camera's en printers)
+			Niet echt goed uitgelgd hoe die het anders doen
+
+How cyber threats can turn into an unwanted real life Hollywood blockbuster:
+	Een uitleg over vrij voor de hand ligende aspecten van de cloud
+		Bij elke extensie van je product is er een kans op malware
+		Opensource code wordt vaak gebruikt
+		Er zijn veel producten die code gebruiken maar de licentie niet goed gebruiken
+			of zelfs vermelden
+		Test zoveel mogelijk
+		
+KBC’S Move To Cloud:
+	Maken gebruik van hun eigen applicaties die ze verbinden met de cloud, na communicatie problemen
+		binnen het bedrijf
+	Nieuwe applicaties worden pas gebruikt als de Cloud Enablement Forum het toestaat.
+		(CEF is een groep mensen die de applicatie nakijken voor het gedeployeerd wordt)
+		Alles moet gedocumenteerd worden
+	Tijd inschatten is moeilijk voor hun (neemt altijd langer dan vooraf gedacht)
+	De SaaS die ze gebruiken moeten ze soms limiteren, aangezien er nieuwe applicaties sorden geimplementeerd
+		die eerder slecht zijn voor KBC
+
+6 Technology Predictions for the Coming Year:
+	Cloud wil be everywhere:
+		Door de pandemie is de de cloud geforceerd om meer te evolueren
+		De cloud bereikbaar maken op afgelegen plaatsen (in de bergen, op de noort en zuidpool ...)
+		G afhankelijkheid wordt groter
+	AI & ML (Machine learning):
+		Voor het voorspellen van problemen
+		Meer machine to machine connecties
+	Data & Analitycs:
+		hedendaags kan men sneller krijgen van data over alles
+			zorgt voor meer AI & ML
+		Data gaat helpen met verbetering van onze levenstijl
+	Video & audio:
+		Touchscreen voelen niet natuurlijk (zijn aangeleerd)
+		Eerder overstappen naar besturing via stem commando's
+	Sustainability in Technology:
+		De cloud is efficienter dan je eigen datacenter
+	Quantum Computing:
+		Van binair denken naar quantum binair
+			bit is 0 of 1 --> quantum bit kan 0 en 1 zijn
+	Space:
+		Meer satelieten maken voor meer data versturing
+
+Don't "move to the cloud" (let's build your blueprint):
+	Microsoft Asure is performant en beveiligd, maar dat betekent niet dat jouw applicatie dat ook is.
+	De cloud is geen bestemming maar een toolbox.
+		(Daarom de titel)
+	Requirements & Assess:
+		What is de Uptime
+		Hoeveel Downtime kan je hebben
+		Is het 24/7 nodig
+		Zijn er pieken van gebruik doorheen de dag of wordt het constant gebruikt doorheen de dag
+	Plan & Design:
+		Het maken van de building block van de applicatie
+			Networking, Security, Acces management, Automatisatie ... worden hier allemaal gedaan
+		Hoe wordt het geimplementeerd.
+			Wordt het geimplementeerd tijdens het aan het draaien is of heb je downtime nodig
+	Implement, migrate, support & Govern
+	Optimize:
+		Requirement evolution, Kosten verbeteren, de tools mogelijk veranderen.
+	Deze fases worden soms overgeslagen aangezien ze te duur, complex of te lang zijn.
+
+What Untackled Problems can AI Solve?:
+	Een probleem dat ze niet in theorie kunnen oplossen, gaan ze oplossen via data sampelen.
+		Kan geen formule maken voor de president te kiezen, maar kan wel uit stemmen concluderen
+			wie de president zou worden.
+	Op zoek gaan naar verbanden in data.
+		NowCasting: Waarbij men uit data gokt wat de huidge en toekomstige waardes zijn
+		Voorspelling:
+	Possablity & Probability
+	
+Integrating artificial intelligence for business success:
+	Een combinatie van economie en buisnus die AI gaat aansturen
+	Afgeleid door de achtergrond muziek
