@@ -1,6 +1,9 @@
 # Dit zijn bestand van hun github waarbij ik commentaar heb geschrijven tijdens het bekijken van de video's
 # https://gitlab.com/nanuchi/youtube-tutorial-series/-/tree/master/demo-kubernetes-components
 
+# https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+# https://minikube.sigs.k8s.io/docs/start/
+
 ### kubectl apply commands in order (maak & verander commando's)
     
     kubectl apply -f mongo-secret.yaml
