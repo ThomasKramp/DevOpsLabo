@@ -3,6 +3,7 @@
 
 # https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 # https://minikube.sigs.k8s.io/docs/start/
+# https://www.youtube.com/watch?v=X48VuDVv0do
 
 ### kubectl apply commands in order (maak & verander commando's)
     
