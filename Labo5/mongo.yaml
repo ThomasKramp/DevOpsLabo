@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+# maakt een gewoon machine aan met pods
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  labels:
+    app: mongodb
+spec:
+  # replica variabele zegt hoeveel dezelfde machines je wilt hebben
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    # declaratie van de pods
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo
+        ports:
+        - containerPort: 27017
+        env:
+        # verwijst naar de secret.yaml file
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-username
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-password
+# --- betekent een nieuw .yaml bestand
+---
+apiVersion: v1
+# maakt een interne service aan
+kind: Service
+metadata:
+  name: mongodb-service
+spec:
+  # verwijst naar de juiste pod via het label van de pods
+  selector:
+    app: mongodb
+  ports:
+    - protocol: TCP
+      port: 27017
+      # targetPort = containerPort
+      targetPort: 27017
