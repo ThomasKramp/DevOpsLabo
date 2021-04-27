@@ -1,0 +1,4 @@
+docker run -d --name jenkins -p 8080:8080 -v /data/jenkins:/var/jenkins_home jenkins/jenkins:lts
+sudo chmod a+rw /data/jenkins
+password:
+	c65ab14ff5234db2a126d934f1fd30a4
