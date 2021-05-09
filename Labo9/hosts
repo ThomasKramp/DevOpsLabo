@@ -1,0 +1,3 @@
+[Jacko-Centos]
+# Commando: ansible -m ping Jacko-Centos
+192.168.0.47	ansible_user=root

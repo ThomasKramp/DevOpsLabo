@@ -1,0 +1,186 @@
+---
+ - hosts: Jacko-Centos
+   user: root
+   vars:
+    data_path: /data
+    vol_gro: volgro
+    log_vol: logvol
+    git_user: ThomasKramp
+    git_mail: s115472@ap.be
+    git_path: https://github.com/ansible/ansible-examples.git
+    wp_pw: root
+    wp_db: wpdb
+    md_pw: root
+    md_db: mddb
+
+   tasks:
+   - name: Instal Persistant Data
+     yum:
+      name: device-mapper-persistent-data
+      state: latest
+
+   - name: Instal Logical Volumes
+     yum:
+      name: lvm2
+      state: latest
+
+#     Disk sda1 is gemount
+#     Disk sda2 heeft al een volume group
+   - name: Create Volume Group
+     debug:
+      msg: Couldn't make volume group
+#     lvg: 
+#      vg: {{ vol_gro }}
+#      pesize: "512"
+#      pvs: /dev/sda1
+
+#     centos_c7t VG is al vol
+   - name: Create Logical Volume
+     debug:
+      msg: Couldn't make logical volume
+#     lvol:
+#      vg: {{ vol_gro }}
+#      lv: {{ log_vol }}
+#      size: 128K
+
+   - name: Instal Git
+     yum:
+      name: git
+      state: latest
+
+   - name: Create Directory ({{ data_path }})
+     file:
+      path: "{{ data_path }}"
+      state: directory
+
+   - name: Git Add Name
+     command: "git config --global user.name {{ git_user }}"
+
+   - name: Git Add Email
+     command: "git config --global user.email {{ git_mail }}"
+
+   - name: Git Checkout
+     git:
+      repo: "{{ git_path }}"
+      dest: /data/gitCheck
+
+   - name: Add Docker Repo
+     get_url:
+      url: https://download.docker.com/linux/centos/docker-ce.repo
+      dest: /etc/yum.repos.d/docker-ce.repo
+     become: yes
+
+   - name: Enable Docker Repo
+     ini_file:
+      dest: /etc/yum.repos.d/docker-ce.repo
+      section: "docker-ce-edge"
+      option: enabled
+      value: "0"
+     become: yes
+
+   - name: Docker Install
+     package: 
+      name: docker-ce
+      state: latest
+     become: yes
+
+     # Tegen python_interpreter foutmelding
+   - name: Python-Docker Install
+     yum:
+      name: python-docker
+      state: latest
+
+     # Tegen API foutmelding
+   - name: Ensure Docker Is On
+     command: service docker restart
+     args:
+      warn: false
+
+   - name: MariaDB Install (Wordpress)
+     docker_container:
+      name: mariaDB
+      image: mariadb:latest
+      volumes:
+       - "{{ data_path }}/mariadb:/var/lib/mysql"
+      env:
+       MYSQL_ROOT_PASSWORD: "{{ wp_pw }}"
+       MYSQL_DATABASE: "{{ wp_db }}"
+
+   - name: WordPress Install
+     docker_container:
+      name: wordpress
+      image: wordpress:latest
+      volumes:
+       - "{{ data_path }}/wordpress:/var/www/html"
+      ports:
+       - "127.0.0.1:8000:80"
+      env:
+       WORDPRESS_DB_USER: "{{ wp_pw }}"
+       WORDPRESS_DB_PASSWORD: "{{ wp_pw }}"
+       WORDPRESS_DB_NAME: "{{ wp_db }}"
+       WORDPRESS_DB_HOST: "{{ wp_db }}"
+
+   - name: Create Network (Wordpress)
+     docker_network:
+      name: wordpressNet
+      connected:
+       - mariaDB
+       - wordpress
+
+   - name: Add Docker-Compose Repo
+     shell: curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+     args:
+      warn: false
+
+   - name: Enable Docker-Compose
+     command: chmod a+x /usr/local/bin/docker-compose
+     args:
+      warn: false
+
+   - name: MariaDB Install (Moodle)
+     docker_container:
+      name: moodleDB
+      image: mariadb:latest
+      volumes:
+       - "{{ data_path }}/moodledb:/var/lib/mysql"
+      env:
+       MYSQL_ROOT_PASSWORD: "{{ md_pw }}"
+       MYSQL_DATABASE: "{{ md_db }}"
+
+   - name: Moodle Install
+     docker_container:
+      name: moodle
+      image: bitnami/moodle:3
+      volumes:
+       - "{{ data_path }}/moodle:/bitnami moodle"
+      ports:
+       - "127.0.0.1:8001:80"
+      env:
+       MOODLE_DATABASE_USER: "{{ md_pw }}"
+       MOODLE_DATABASE_PASSWORD: "{{ md_pw }}"
+       MOODLE_DATABASE_NAME: "{{ md_db }}"
+       MOODLE_DATABASE_HOST: "{{ md_db }}"
+
+   - name: Create Network (Moodle)
+     docker_network:
+      name: moodleNet
+      connected:
+       - moodleDB
+       - wordpress
+
+   - name: Install Jenkins
+     docker_container:
+      name: jenkins
+      image: jenkins/jenkins:latest
+      volumes:
+       - "{{ data_path }}/jenkins:/var/jenkins_home"
+      ports:
+       - "8080:80"
+
+   - name: Enable Jenkins
+     command: "chmod a+rw {{ data_path }}/jenkins"
+     args:
+      warn: false
+
+   - name: Container Check
+     shell: docker ps
