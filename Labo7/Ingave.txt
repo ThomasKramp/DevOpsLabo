@@ -1,0 +1,11 @@
+Project:
+	Een multiplayer Pong via Python & MQTT maken
+	(Semester Opdracht RaspBerry Pi)
+
+Github Link:
+	https://github.com/ThomasKramp/RaspBerryPi_Pong
+
+To-Do Lijstje:
+	De build bij het aanmaken of aanpassen van een file nakijken.
+	Een notificatie sturen naar alle programeurs als er een commit, merge, pull, of push wordt gedaan.
+	Een foutmelding geven als er een bug in de code wordt gedecteerd.
