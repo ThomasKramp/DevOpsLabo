@@ -7,7 +7,7 @@ connect via ssh:
 	Ga naar de docker container
 		docker exec -it krampMON bash
 	Wordt monotoring user
-		cu cmk
+		su cmk
 	Verbind via ssh
 		ssh-keygen
 		ssh-copy-id <host user>@<host ip address>
