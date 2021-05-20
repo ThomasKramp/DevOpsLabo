@@ -18,20 +18,20 @@ volumes:
 # Get old files:
 # cd /data/jenkins
 # ls
-# cp -r config.xml ~/Documents/Repo/pong/Jenkins/
-# cp -r plugins ~/Documents/Repo/pong/Jenkins/
-# cp -r users ~/Documents/Repo/pong/Jenkins/
+# cp -r config.xml ~/Documents/Repo/pong/Compose/
+# cp -r plugins ~/Documents/Repo/pong/Compose/
+# cp -r users ~/Documents/Repo/pong/Compose/
 
 # commands check:
-# cd ~/Documents/Repo/pong/Jenkins
+# cd ~/Documents/Repo/pong/Compose
 # docker-compose -f docker-compose.yml up -d
 # docker logs composeJenkins
 
 # commands file-transfer:
-# sudo cp -r ~/Documents/Repo/pong/Jenkins/PongChamp /data/compose/jenkins/jobs
-# sudo cp -r ~/Documents/Repo/pong/Jenkins/config.xml /data/compose/jenkins
-# sudo cp -r ~/Documents/Repo/pong/Jenkins/users /data/compose/jenkins
-# sudo cp -r ~/Documents/Repo/pong/Jenkins/plugins /data/compose/jenkins
+# sudo cp -r ~/Documents/Repo/pong/Compose/PongChamp /data/compose/jenkins/jobs
+# sudo cp -r ~/Documents/Repo/pong/Compose/config.xml /data/compose/jenkins
+# sudo cp -r ~/Documents/Repo/pong/Compose/users /data/compose/jenkins
+# sudo cp -r ~/Documents/Repo/pong/Compose/plugins /data/compose/jenkins
 
 # commands install:
 # docker exec -u root -it composeJenkins apt-get update

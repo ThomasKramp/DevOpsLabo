@@ -38,16 +38,15 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>date
-
-cd /var/jenkins_home/workspace/PongChamp/Project
+      <command>cd /var/jenkins_home/workspace/PongChamp/Project
 echo &quot;In the right directory&quot;
 
 find * | grep \.py | grep -v pycache \
 	| xargs -t -I % sh -c &quot;{ echo &apos;\n&apos;%; \
     sed -i &apos;s/^/\t/&apos; %; \
     sed -i &apos;1s/^/try: \n/&apos; %; \
-    echo \&quot;\nexcept Exception as e: \n\tprint(&apos;Error: \&quot;{}\&quot;&apos;.format(e))\&quot; &gt;&gt; %; }&quot; \
+    printf \&quot;\n\tstop = True\&quot; &gt;&gt; %; \
+    printf \&quot;\nexcept Exception as e: \n\tprint(&apos;Error: \&quot;{}\&quot;&apos;.format(e))\&quot; &gt;&gt; %; }&quot; \
 /
 
 find * | grep \.py | grep -v pycache | xargs -t -I % sh -c &quot;{ echo &apos;\n&apos;%; python3 %; }&quot;</command>
