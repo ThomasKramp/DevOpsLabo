@@ -31,15 +31,24 @@ Voeg services toe:
 
 Voeg plugins toe:
 	wget http://172.17.0.1:8081/cmk/check_mk/agents/plugins/mk_docker_node
-	sudo dpkg -i mk_docker_node
-        sudo cp mk_docker_node /usr/lib/check_mk_agent/plugins/
         sudo chmod 755 mk_docker_node
+        sudo cp mk_docker_node /usr/lib/check_mk_agent/plugins/
         
 	wget http://172.17.0.1:8081/cmk/check_mk/agents/plugins/mk_docker_container_piggybacked
-        sudo dpkg -i mk_docker_container_piggybacked
-	sudo cp mk_docker_container_piggybacked /usr/lib/check_mk_agent/plugins/
 	sudo chmod 755 mk_docker_container_piggybacked
+	sudo cp mk_docker_container_piggybacked /usr/lib/check_mk_agent/plugins/
 	
+Container monotoring:
+	WATO > Host & Services Parameters > Parameters for discovered services
+		Docker node container levels
+			creat new rule
+				Rule Properties > Discription <naam rule>
+				Conditions > Explicit hosts <Hostname>
+		Docker node disk usage
+			creat new rule
+				Rule Properties > Discription <naam rule>
+				Conditions > Explicit hosts <Hostname>
+
 Voeg containers toe:
 	cd /data/moding/cmk/tmp/check_mk/piggyback
 	ls
