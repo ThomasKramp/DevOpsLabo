@@ -28,3 +28,24 @@ Voeg services toe:
 		Als dat nog niet werkt:
 			systemctl stop ufw (voer dan een test uit)
 			systemctl start ufw
+
+Voeg plugins toe:
+	wget http://172.17.0.1:8081/cmk/check_mk/agents/plugins/mk_docker_node
+	sudo dpkg -i mk_docker_node
+        sudo cp mk_docker_node /usr/lib/check_mk_agent/plugins/
+        sudo chmod 755 mk_docker_node
+        
+	wget http://172.17.0.1:8081/cmk/check_mk/agents/plugins/mk_docker_container_piggybacked
+        sudo dpkg -i mk_docker_container_piggybacked
+	sudo cp mk_docker_container_piggybacked /usr/lib/check_mk_agent/plugins/
+	sudo chmod 755 mk_docker_container_piggybacked
+	
+Voeg containers toe:
+	cd /data/moding/cmk/tmp/check_mk/piggyback
+	ls
+	docker ps -a
+	In de check_mk website:
+		maak een nieuwe host aan
+		gebruik het id als naam (bv: 119213ada8e1)
+		zet ipv4 op no ip
+		set agent op no agent	
