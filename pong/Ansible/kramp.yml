@@ -1,0 +1,118 @@
+---
+ - hosts: Kramp-DevOps
+   user: root
+   vars:
+    data_path: /data
+    git_user: ThomasKramp
+    git_mail: s115472@ap.be
+    wp_pw: root
+    wp_db: wpdb
+
+   tasks:
+   - name: Instal Persistant Data
+     yum:
+      name: device-mapper-persistent-data
+      state: latest
+
+   - name: Instal Git
+     yum:
+      name: git
+      state: latest
+
+   - name: Create Directory ({{ data_path }})
+     file:
+      path: "{{ data_path }}"
+      state: directory
+
+   - name: Git Add Name
+     command: "git config --global user.name {{ git_user }}"
+
+   - name: Git Add Email
+     command: "git config --global user.email {{ git_mail }}"
+
+   - name: Add Docker Repo
+     get_url:
+      url: https://download.docker.com/linux/centos/docker-ce.repo
+      dest: /etc/yum.repos.d/docker-ce.repo
+     become: yes
+
+   - name: Enable Docker Repo
+     ini_file:
+      dest: /etc/yum.repos.d/docker-ce.repo
+      section: "docker-ce-edge"
+      option: enabled
+      value: "0"
+     become: yes
+
+   - name: Docker Install
+     package: 
+      name: docker-ce
+      state: latest
+     become: yes
+
+     # Tegen python_interpreter foutmelding
+   - name: Python-Docker Install
+     yum:
+      name: python-docker
+      state: latest
+
+     # Tegen API foutmelding
+   - name: Ensure Docker Is On
+     command: service docker restart
+     args:
+      warn: false
+
+   - name: MariaDB Install (Wordpress)
+     docker_container:
+      name: mariaDB
+      image: mariadb:latest
+      volumes:
+       - "{{ data_path }}/mariadb:/var/lib/mysql"
+      env:
+       MYSQL_ROOT_PASSWORD: "{{ wp_pw }}"
+       MYSQL_DATABASE: "{{ wp_db }}"
+
+   - name: WordPress Install
+     docker_container:
+      name: wordpress
+      image: wordpress:latest
+      volumes:
+       - "{{ data_path }}/wordpress:/var/www/html"
+      ports:
+       - "127.0.0.1:8000:80"
+      env:
+       WORDPRESS_DB_USER: "{{ wp_pw }}"
+       WORDPRESS_DB_PASSWORD: "{{ wp_pw }}"
+       WORDPRESS_DB_NAME: "{{ wp_db }}"
+       WORDPRESS_DB_HOST: "{{ wp_db }}"
+
+   - name: Create Network (Wordpress)
+     docker_network:
+      name: wordpressNet
+      connected:
+       - mariaDB
+       - wordpress
+
+   - name: Install Jenkins
+     docker_container:
+      name: jenkins
+      image: jenkins/jenkins:latest
+      volumes:
+       - "{{ data_path }}/jenkins:/var/jenkins_home"
+      ports:
+       - "8080:80"
+
+   - name: Enable Jenkins
+     command: "chmod a+rw {{ data_path }}/jenkins"
+     args:
+      warn: false
+
+   - name: Install Check_mk
+     docker_container:
+      name: monitoring
+      image: checkmk/check-mkraw:1.5.0-latest
+      volumes:
+       - "{{ data_path }}/moding:/omd/sites"
+       - "etc/localtime:/etc/localtime:ro"
+      ports:
+       - "8081:5000"
