@@ -1,0 +1,4 @@
+jenkins config path:
+	/var/jenkins_home/jobs/PongChamp
+
+mk_check config path:
