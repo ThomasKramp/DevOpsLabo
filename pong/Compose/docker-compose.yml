@@ -2,11 +2,14 @@ version: '2'
 services:
   composeJenkins:
     image: jenkins/jenkins:latest
+    privileged: true
+    user: root
     container_name: composeJenkins
     volumes:
-      - "/data/compose/jenkins:/var/jenkins_home"
+      - /data/compose/jenkins:/var/jenkins_home
     ports:
-      - "8080:80"
+      - 8082:8080
+      - 50000:50000
 
 volumes:
   jenkins:
