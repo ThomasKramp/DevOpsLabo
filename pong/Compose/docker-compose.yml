@@ -1,6 +1,6 @@
 version: '2'
 services:
-  jenkins:
+  composeJenkins:
     image: jenkins/jenkins:latest
     container_name: composeJenkins
     volumes:
