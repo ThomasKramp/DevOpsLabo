@@ -27,6 +27,7 @@ volumes:
 # docker-compose -f docker-compose.yml up -d
 # docker logs composeJenkins
 # docker exec -it composeJenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
 # cd /data/compose/jenkins
 # sudo cp -r ~/Documents/Repo/pong/Compose/config.xml /data/compose/jenkins
 # sudo cp -r ~/Documents/Repo/pong/Compose/users /data/compose/jenkins
