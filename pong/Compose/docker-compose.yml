@@ -1,0 +1,13 @@
+version: '2'
+services:
+  composeJenkins:
+    name: jenkins
+    image: jenkins/jenkins:latest
+    volumes:
+      - "data/composeJenkins:/var/jenkins_home"
+    ports:
+      - "8080:80"
+
+volumes:
+  composeJenkins:
+    driver: local

@@ -62,37 +62,6 @@
      args:
       warn: false
 
-   - name: MariaDB Install (Wordpress)
-     docker_container:
-      name: mariaDB
-      image: mariadb:latest
-      volumes:
-       - "{{ data_path }}/mariadb:/var/lib/mysql"
-      env:
-       MYSQL_ROOT_PASSWORD: "{{ wp_pw }}"
-       MYSQL_DATABASE: "{{ wp_db }}"
-
-   - name: WordPress Install
-     docker_container:
-      name: wordpress
-      image: wordpress:latest
-      volumes:
-       - "{{ data_path }}/wordpress:/var/www/html"
-      ports:
-       - "127.0.0.1:8000:80"
-      env:
-       WORDPRESS_DB_USER: "{{ wp_pw }}"
-       WORDPRESS_DB_PASSWORD: "{{ wp_pw }}"
-       WORDPRESS_DB_NAME: "{{ wp_db }}"
-       WORDPRESS_DB_HOST: "{{ wp_db }}"
-
-   - name: Create Network (Wordpress)
-     docker_network:
-      name: wordpressNet
-      connected:
-       - mariaDB
-       - wordpress
-
    - name: Install Jenkins
      docker_container:
       name: jenkins
