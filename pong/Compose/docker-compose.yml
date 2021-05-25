@@ -21,6 +21,7 @@ volumes:
 # cp -r config.xml ~/Documents/Repo/pong/Jenkins/
 # cp -r plugins ~/Documents/Repo/pong/Jenkins/
 # cp -r users ~/Documents/Repo/pong/Jenkins/
+# https://github.com/ThomasKramp/DevOpsLabo/tree/master/pong/Jenkins
 
 # commands check:
 # cd ~/Documents/Repo/pong/Jenkins
