@@ -18,7 +18,7 @@
        name: "{{ item }}"
        state: latest
        update_cache: yes
-     loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'gnupg-agent' ]
+     loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'gnupg-agent', 'python3-pip', 'python3-setuptools' ]
      vars: 
        packeges:
        - apt-transport-https
@@ -46,6 +46,15 @@
        state: latest
        update_cache: yes
      loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io']
+     
+   - name: install certain python modules for docker
+     pip:
+       name: "{{ item.name }}"
+       version: "{{ item.version }}"
+       state: present
+    with_items:
+    - { name: docker, version: 2.0.0 }
+    - { name: docker-py, version: 1.10.6 }
 
    - name: Add user to docker group
      user:
