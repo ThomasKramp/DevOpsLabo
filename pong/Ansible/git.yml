@@ -1,0 +1,21 @@
+---
+ - hosts: all
+   # ansible-playbook docker.yml
+   # ssh-keygen
+   # cat ~/.ssh/id_rsa.pub
+   # ssh-copy-id kramp@192.168.0.50
+   # https://graspingtech.com/install-docker-ansible/
+
+   become: yes
+
+   tasks:
+   - name: Update apt cache
+     apt: 
+       update_cache: yes
+   
+   - name: Clone git repo with files
+     ansible.builtin.git:
+       repo: "https://github.com/ThomasKramp/DevOpsLabo.git"
+       dest: "/home/{{ ansible_user }}/Documents"
+
+

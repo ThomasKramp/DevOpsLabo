@@ -1,16 +1,11 @@
 ---
  - hosts: all
-   # ansible-playbook kramp.yml
+   # ansible-playbook docker.yml
    # ssh-keygen
    # cat ~/.ssh/id_rsa.pub
    # ssh-copy-id kramp@192.168.0.50
-   vars:
-    data_path: /data
-    git_user: ThomasKramp
-    git_mail: s115472@ap.be
-    wp_pw: root
-    wp_db: wpdb
-    
+   # https://graspingtech.com/install-docker-ansible/
+
    become: yes
 
    tasks:
@@ -54,25 +49,7 @@
 
    - name: Add user to docker group
      user:
-       name: "{{ ansible_user }}"
+       name: "{{ansible_user}}"
        group: docker
-   
-   - name: Clone git repo with files
-     ansible.builtin.git:
-       repo: "https://github.com/ThomasKramp/DevOpsLabo.git"
-       dest: "/home/{{ ansible_user }}/Documents"
 
-   - name: Install Jenkins
-     docker_container:
-      name: jenkins
-      image: jenkins/jenkins:latest
-      volumes:
-       - "{{ data_path }}/jenkins:/var/jenkins_home"
-      ports:
-       - "8080:8080"
 
-   - name: Enable Jenkins
-     command: "chmod a+rw {{ data_path }}/jenkins"
-     args:
-      warn: false
-      
