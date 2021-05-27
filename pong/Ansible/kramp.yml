@@ -1,15 +1,19 @@
 ---
- - hosts: Kramp-DevOps
-   user: root
+ - hosts: all
+   # ansible-playbook kramp.yml
+   # ssh-keygen
+   # cat ~/.ssh/id_rsa.pub
+   # ssh-copy-id kramp@192.168.0.50
    vars:
     data_path: /data
     git_user: ThomasKramp
     git_mail: s115472@ap.be
     wp_pw: root
     wp_db: wpdb
+    
+   become: yes
 
    tasks:
-<<<<<<< HEAD
    - name: Update apt cache
      apt: 
        update_cache: yes
@@ -65,60 +69,6 @@
        owner: root
        group: root        
        mode: 0755
-=======
-   - name: Instal Persistant Data
-     yum:
-      name: device-mapper-persistent-data
-      state: latest
-
-   - name: Instal Git
-     yum:
-      name: git
-      state: latest
-
-   - name: Create Directory ({{ data_path }})
-     file:
-      path: "{{ data_path }}"
-      state: directory
-
-   - name: Git Add Name
-     command: "git config --global user.name {{ git_user }}"
-
-   - name: Git Add Email
-     command: "git config --global user.email {{ git_mail }}"
-
-   - name: Add Docker Repo
-     get_url:
-      url: https://download.docker.com/linux/centos/docker-ce.repo
-      dest: /etc/yum.repos.d/docker-ce.repo
-     become: yes
-
-   - name: Enable Docker Repo
-     ini_file:
-      dest: /etc/yum.repos.d/docker-ce.repo
-      section: "docker-ce-edge"
-      option: enabled
-      value: "0"
-     become: yes
-
-   - name: Docker Install
-     package: 
-      name: docker-ce
-      state: latest
-     become: yes
-
-     # Tegen python_interpreter foutmelding
-   - name: Python-Docker Install
-     yum:
-      name: python-docker
-      state: latest
-
-     # Tegen API foutmelding
-   - name: Ensure Docker Is On
-     command: service docker restart
-     args:
-      warn: false
->>>>>>> parent of d7771c2... sddf
 
    - name: Install Jenkins
      docker_container:
@@ -133,13 +83,4 @@
      command: "chmod a+rw {{ data_path }}/jenkins"
      args:
       warn: false
-
-   - name: Install Check_mk
-     docker_container:
-      name: monitoring
-      image: checkmk/check-mkraw:1.5.0-latest
-      volumes:
-       - "{{ data_path }}/moding:/omd/sites"
-       - "etc/localtime:/etc/localtime:ro"
-      ports:
-       - "8081:5000"
+      
