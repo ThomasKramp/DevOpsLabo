@@ -1,0 +1,8 @@
+docker exec -u root -it jenkins bash
+apt-get update
+apt-get install python3-pip -y
+pip3 install paho-mqtt -y
+apt-get install python3-tk -y
+find * | grep \.py | xargs -t -I % sh -c '{ echo %; python3 %; }'
+exit()
+docker commit jenkins local/jenkins

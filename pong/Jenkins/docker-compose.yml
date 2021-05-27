@@ -1,0 +1,47 @@
+version: '2'
+services:
+  composeJenkins:
+    image: jenkins/jenkins:latest
+    privileged: true
+    user: root
+    container_name: composeJenkins
+    volumes:
+      - /data/compose/jenkins:/var/jenkins_home
+    ports:
+      - 8082:8080
+      - 50000:50000
+
+volumes:
+  jenkins:
+    driver: local
+
+# Get old files:
+# cd /data/jenkins
+# ls
+# cp -r config.xml ~/Documents/Repo/pong/Compose/
+# cp -r plugins ~/Documents/Repo/pong/Compose/
+# cp -r users ~/Documents/Repo/pong/Compose/
+
+# commands check:
+# cd ~/Documents/Repo/pong/Compose
+# docker-compose -f docker-compose.yml up -d
+# docker logs composeJenkins
+
+# commands file-transfer:
+# sudo cp -r ~/Documents/Repo/pong/Compose/PongChamp /data/compose/jenkins/jobs
+# sudo cp -r ~/Documents/Repo/pong/Compose/config.xml /data/compose/jenkins
+# sudo cp -r ~/Documents/Repo/pong/Compose/users /data/compose/jenkins
+# sudo cp -r ~/Documents/Repo/pong/Compose/plugins /data/compose/jenkins
+
+# commands install:
+# docker exec -u root -it composeJenkins apt-get update
+# docker exec -u root -it composeJenkins apt-get install -y python3-pip
+# docker exec -u root -it composeJenkins pip3 install paho-mqtt python3-tk
+# docker exec -u root -it composeJenkins apt-get install  -y
+# docker commit composeJenkins local/composeJenkins
+# docker exec -u root -it jenkins apt-get install -y mosquitto mosquitto-clients
+# docker exec -u root -it jenkins service mosquitto start
+
+# Start:
+# docker stop composeJenkins
+# docker start composeJenkins

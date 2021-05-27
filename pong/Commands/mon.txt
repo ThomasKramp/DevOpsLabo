@@ -1,0 +1,51 @@
+docker container run -dit -p 8081:5000 --ulimit nofile=1024 -v /data/moding:/omd/sites --name krampMON -v/etc/localtime:/etc/localtime:ro --restart always checkmk/check-mkraw:1.5.0-latest
+
+website:
+	http://<docker ip address>:8081/cmk
+
+connect via ssh:
+	Ga naar de docker container
+		docker exec -it krampMON bash
+	Wordt monotoring user
+		su cmk
+	Verbind via ssh
+		ssh-keygen
+		ssh-copy-id <host user>@<host ip address>
+		ssh-copy-id thomaskramp@192.168.0.35
+	Kij na of je kan verbinden zonder wachtwoord
+		ssh thomaskramp@192.168.0.35
+
+Op de ubuntu machine:
+	sudo apt-get install xinetd
+	wget http://172.17.0.1:8081/cmk/check_mk/agents/check-mk-agent_1.5.0p25-1_all.deb
+	sudo dpkg -i check-mk-agent_1.5.0p25-1_all.deb
+	
+Voeg services toe:
+	cd etc/xinetd.d/	(draait op poort 6556)
+	systemctl start xinetd
+	sudo ufw allow xinetd
+	sudo ufw allow 6556
+		Als dat nog niet werkt:
+			systemctl stop ufw (voer dan een test uit)
+			systemctl start ufw
+
+Voeg plugins toe:
+	wget http://172.17.0.1:8081/cmk/check_mk/agents/plugins/mk_docker_node
+	sudo dpkg -i mk_docker_node
+        sudo cp mk_docker_node /usr/lib/check_mk_agent/plugins/
+        sudo chmod 755 mk_docker_node
+        
+	wget http://172.17.0.1:8081/cmk/check_mk/agents/plugins/mk_docker_container_piggybacked
+        sudo dpkg -i mk_docker_container_piggybacked
+	sudo cp mk_docker_container_piggybacked /usr/lib/check_mk_agent/plugins/
+	sudo chmod 755 mk_docker_container_piggybacked
+	
+Voeg containers toe:
+	cd /data/moding/cmk/tmp/check_mk/piggyback
+	ls
+	docker ps -a
+	In de check_mk website:
+		maak een nieuwe host aan
+		gebruik het id als naam (bv: 119213ada8e1)
+		zet ipv4 op no ip
+		set agent op no agent	
