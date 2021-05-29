@@ -1,0 +1,13 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/*.log
+    #- c:\programdata\elasticsearch\logs\*
+    
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+  username: "thomaskramp"
+  password: "Th0m@s" 
+setup.kibana:
+  host: "localhost:5601"

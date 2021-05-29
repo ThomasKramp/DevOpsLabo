@@ -2,9 +2,42 @@ docker run -p 5601:5601 -p 9200:9200 -p 9300:9300 -p 5044:5044 -it -e "discovery
 
 // http://192.168.0.35:5601/app/home#/tutorial_directory
 
-sysctl -w vm.max_map_count=262144
 
 // https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode
 // https://stackoverflow.com/questions/51445846/elasticsearch-max-virtual-memory-areas-vm-max-map-count-65530-is-too-low-inc
 
-//https://www.elastic.co/guide/en/beats/filebeat/7.6/filebeat-getting-started.html
+sysctl -w vm.max_map_count=262144
+
+// https://www.elastic.co/guide/en/beats/filebeat/7.6/filebeat-getting-started.html
+// https://www.elastic.co/guide/en/beats/filebeat/7.6/directory-layout.html
+
+// Ubuntu
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.2-amd64.deb
+
+sudo dpkg -i filebeat-7.6.2-amd64.deb
+
+cd /etc/filebeat/
+sudo nano filebeat.yml
+	Edit: Change "enabled: false" --> "enabled: true"
+	Edit: Un-comment "username: "elastic""
+	Edit: Un-comment "password: "changeme""
+	Add: "setup.kibana:
+	        host: "localhost:5601""
+
+sudo filebeat setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["localhost:9200"]'
+
+sudo filebeat setup --dashboards
+
+sudo filebeat setup -e \
+  -E output.logstash.enabled=false \
+  -E output.elasticsearch.hosts=['localhost:9200'] \
+  -E output.elasticsearch.username=elastic \
+  -E output.elasticsearch.password=changeme \
+  -E setup.kibana.host=localhost:5601
+  
+sudo service filebeat start
+
+// Windows
+https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.0-windows-x86_64.msi
+
+
