@@ -60,12 +60,7 @@ Open command prompt as admin
 
 	.\filebeat.exe setup --dashboards
 
-	.\filebeat.exe setup -e `
-  -E output.logstash.enabled=false `
-  -E output.elasticsearch.hosts=['192.168.0.35:9200'] `
-  -E output.elasticsearch.username=elastic `
-  -E output.elasticsearch.password=changeme `
-  -E setup.kibana.host=192.168.0.35:5601
+	.\filebeat.exe setup -e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['192.168.0.35:9200'] -E output.elasticsearch.username=elastic ` -E output.elasticsearch.password=changeme -E setup.kibana.host=192.168.0.35:5601
 
 	Start-Service filebeat
 
