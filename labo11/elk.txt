@@ -1,0 +1,8 @@
+docker run -p 5601:5601 -p 9200:9200 -p 9300:9300 -p 5044:5044 -it -e "discovery.type=single-node" -v /data/elk:/var/lib/elasticsearch --name elk sebp/elk:latest
+
+// http://192.168.0.35:5601/app/home#/tutorial_directory
+
+sysctl -w vm.max_map_count=262144
+
+// https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode
+// https://stackoverflow.com/questions/51445846/elasticsearch-max-virtual-memory-areas-vm-max-map-count-65530-is-too-low-inc
