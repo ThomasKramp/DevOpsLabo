@@ -19,10 +19,9 @@ sudo dpkg -i filebeat-7.6.2-amd64.deb
 cd /etc/filebeat/
 sudo nano filebeat.yml
 	Edit: Change "enabled: false" --> "enabled: true"
+	Edit: Un-comment "host: "localhost:5601""
 	Edit: Un-comment "username: "elastic""
 	Edit: Un-comment "password: "changeme""
-	Add: "setup.kibana:
-	        host: "localhost:5601""
 
 sudo filebeat setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["localhost:9200"]'
 
@@ -38,6 +37,38 @@ sudo filebeat setup -e \
 sudo service filebeat start
 
 // Windows
-https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.0-windows-x86_64.msi
+// https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.13.0-windows-x86_64.zip
+Rename "filebeat-7.13.0-windows-x86_64.zip" --> "Filebeat.zip"
+Extract "Filebeat.zip" --> C:\ Program Files
+
+Open command prompt as admin
+	cd "C:\Program Files\Filebeat"
+	PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps1.
+	Rename filebeat.example.yml --> filebeat.yml
+
+
+Via Visual Studio Code:
+	Edit: Change "enabled: false" --> "enabled: true"
+	Edit: Un-comment "host: "localhost:5601""
+	Edit: Change "host: "localhost:5601"" --> "host: "192.168.0.35:5601""
+	Edit: Change "host: "localhost:9200"" --> "host: "192.168.0.35:9200""
+	Edit: Un-comment "username: "elastic""
+	Edit: Un-comment "password: "changeme""
+
+Open command prompt as admin
+	.\filebeat.exe setup --index-management -E output.logstash.enabled=false -E output.elasticsearch.hosts=["192.168.0.35:9200"]
+
+	.\filebeat.exe setup --dashboards
+
+	.\filebeat.exe setup -e `
+  -E output.logstash.enabled=false `
+  -E output.elasticsearch.hosts=['192.168.0.35:9200'] `
+  -E output.elasticsearch.username=elastic `
+  -E output.elasticsearch.password=changeme `
+  -E setup.kibana.host=192.168.0.35:5601
+
+	Start-Service filebeat
+
+// https://www.elastic.co/guide/en/beats/filebeat/7.13/filebeat-installation-configuration.html
 
 
