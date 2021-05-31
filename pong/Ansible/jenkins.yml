@@ -25,18 +25,9 @@
      args:
       warn: false
       
-   - name: copying file with playbook
-     become: true 
-     copy:
-       src: ~/Documents/files/jenkins.tar.gz
-       dest: "/home/{{ ansible_user }}/Documents/"
-       owner: "{{ ansible_user }}"
-       group: root        
-       mode: 0755
-      
    - name: Extract jenkins.tar.gz into /data/jankins
      ansible.builtin.unarchive:
-       src: "~/Documents/files/jenkins.tar.gz"
+       src: "~/Documents/files/jenkins/jenkins.tar.gz"
        dest: "{{ data_path }}"
        
    - name: Stop Jenkins
