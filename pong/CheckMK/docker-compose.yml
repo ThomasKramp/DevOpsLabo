@@ -1,0 +1,18 @@
+version: '2'
+services:
+  composeJenkins:
+    image: checkmk/check-mk-raw:1.5.0-latest
+    privileged: true
+    user: root
+    container_name: composeMon
+    volumes:
+      - /data/compose/checkmk:/omd/sites
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 8081:5000
+
+volumes:
+  checkmk:
+    driver: local
+
+# docker container run -dit -p 8081:5000 --ulimit nofile=1024 -v /data/moding:/omd/sites --name krampMON -v/etc/localtime:/etc/localtime:ro --restart always checkmk/check-mkraw:1.5.0-latest

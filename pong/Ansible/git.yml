@@ -1,11 +1,5 @@
 ---
  - hosts: all
-   # ansible-playbook docker.yml
-   # ssh-keygen
-   # cat ~/.ssh/id_rsa.pub
-   # ssh-copy-id kramp@192.168.0.50
-   # https://graspingtech.com/install-docker-ansible/
-
    become: yes
 
    tasks:

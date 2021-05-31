@@ -1,17 +1,13 @@
 ---
  - hosts: all
+   become: yes
+   vars:
+    data_path: /data
+    
    # ansible-playbook kramp.yml
    # ssh-keygen
    # cat ~/.ssh/id_rsa.pub
    # ssh-copy-id kramp@192.168.0.50
-   vars:
-    data_path: /data
-    git_user: ThomasKramp
-    git_mail: s115472@ap.be
-    wp_pw: root
-    wp_db: wpdb
-    
-   become: yes
 
    tasks:
    - name: Update apt cache

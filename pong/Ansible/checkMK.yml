@@ -3,8 +3,11 @@
    become: yes
    vars:
     data_path: /data
+    git_user: ThomasKramp
+    git_mail: s115472@ap.be
+    wp_pw: root
+    wp_db: wpdb
     
-   # sudo tar -xvf ~/Documents/jenkins.tar.gz -C /data
 
    tasks:
    - name: Update apt cache

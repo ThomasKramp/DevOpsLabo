@@ -1,14 +1,8 @@
 ---
  - hosts: all
-   # ansible-playbook tar.yml
-   # ssh-keygen
-   # cat ~/.ssh/id_rsa.pub
-   # ssh-copy-id kramp@192.168.0.50
-   
+   become: yes
    # sudo tar -zcvf jenkins.tar.gz jenkins/
    # cp -r jenkins.tar.gz ~/Documents/Repo/pong/
-
-   become: yes
 
    tasks:
    - name: Update apt cache

@@ -4,12 +4,6 @@
    # ssh-keygen
    # cat ~/.ssh/id_rsa.pub
    # ssh-copy-id kramp@192.168.0.50
-   vars:
-     create_containers: 4
-     default_container_name: docker
-     default_container_image: ubuntu
-     default_container_command: sleep 1d
-
    become: yes
    become_user: kramp
    
