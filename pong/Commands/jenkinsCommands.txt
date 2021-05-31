@@ -6,3 +6,5 @@ apt-get install python3-tk -y
 find * | grep \.py | xargs -t -I % sh -c '{ echo %; python3 %; }'
 exit()
 docker commit jenkins local/jenkins
+
+docker exec -u root -it jenkins apt install -y ansible

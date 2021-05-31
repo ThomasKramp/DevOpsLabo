@@ -3,53 +3,35 @@
    become: yes
    vars:
     data_path: /data
-    git_user: ThomasKramp
-    git_mail: s115472@ap.be
-    wp_pw: root
-    wp_db: wpdb
-    
 
    tasks:
    - name: Update apt cache
      apt: 
        update_cache: yes
 
-   - name: Install Jenkins
+   - name: Install Check_MK
      docker_container:
-      name: jenkins
-      image: jenkins/jenkins:latest
+      name: checkMon
+      image: checkmk/check-mk-raw:1.5.0-latest
       volumes:
-       - "{{ data_path }}/jenkins:/var/jenkins_home"
+      - "{{ data_path }}:/omd/sites"
+      - /etc/localtime:/etc/localtime:ro
       ports:
-       - "8080:80"
-
-   - name: Enable Jenkins
-     command: "chmod a+rw {{ data_path }}/jenkins"
-     args:
-      warn: false
+       - 8081:5000
       
-   - name: copying file with playbook
-     become: true 
-     copy:
-       src: ~/Documents/files/jenkins.tar.gz
-       dest: "/home/{{ ansible_user }}/Documents/"
-       owner: "{{ ansible_user }}"
-       group: root        
-       mode: 0755
-      
-   - name: Extract jenkins.tar.gz into /data/jankins
+   - name: Extract cmk.tar.gz into /data/cmk
      ansible.builtin.unarchive:
-       src: "~/Documents/files/jenkins.tar.gz"
+       src: "~/Documents/files/checkmk/cmk.tar.gz"
        dest: "{{ data_path }}"
        
-   - name: Stop Jenkins
+   - name: Stop Check-MK
      docker_container:
-       name: jenkins
+       name: checkMon
        state: stopped
        
-   - name: Start Jenkins
+   - name: Start Check-MK
      docker_container:
-       name: jenkins
+       name: checkMon
        state: started  
        
      
