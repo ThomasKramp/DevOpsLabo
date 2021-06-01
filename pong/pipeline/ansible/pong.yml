@@ -25,7 +25,7 @@
      community.docker.docker_image:
        name: pong:v1.0
        build:
-         path: ~/Documents
+         path: ~/
        source: build
        state: present
    
