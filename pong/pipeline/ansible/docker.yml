@@ -14,16 +14,6 @@
        state: latest
        update_cache: yes
      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'gnupg-agent', 'python3-pip', 'python3-setuptools' ]
-     vars: 
-       packeges:
-       - apt-transport-https
-       - ca-certificates
-       - curl
-       - software-properties-common
-       - gnupg-agent
-       - python3-pip
-       - virtualenv
-       - python3-setuptools
      
    - name: Add an apt signing key for Docker
      apt_key:
