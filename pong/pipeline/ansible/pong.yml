@@ -11,7 +11,7 @@
    
    - name: copy Dockerfile
      copy:
-       src: ~/Documents/Repo/pong/Commands/Dockerfile
+       src: ~/config/build/Dockerfile
        dest: ~/Documents
        owner: "{{ ansible_user }}"
        group: root
@@ -36,7 +36,7 @@
        
    - name: Move Files
      copy:
-       src: ~/Documents/Repo/pong/
+       src: ~/config/game/
        dest: "{{ data_path }}/pong/"
        owner: "{{ ansible_user }}"
        group: root
