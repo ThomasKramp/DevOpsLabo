@@ -12,7 +12,7 @@ MAINTAINER Thomas Kramp <s115472@ap.be>
 
 RUN apt-get -y update
 RUN apt-get install -y netcat
-RUN apt-get install -y tzdata 
+RUN apt-get install -y tzdata
 RUN apt-get install -y apache2 
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN apt-get install -y curl

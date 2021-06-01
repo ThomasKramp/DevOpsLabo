@@ -37,7 +37,7 @@ volumes:
 # docker exec -u root -it composeJenkins apt-get update
 # docker exec -u root -it composeJenkins apt-get install -y python3-pip
 # docker exec -u root -it composeJenkins pip3 install paho-mqtt python3-tk
-# docker exec -u root -it composeJenkins apt-get install  -y
+# docker exec -u root -it composeJenkins apt-get install python3-tk -y
 # docker commit composeJenkins local/composeJenkins
 # docker exec -u root -it jenkins apt-get install -y mosquitto mosquitto-clients
 # docker exec -u root -it jenkins service mosquitto start
