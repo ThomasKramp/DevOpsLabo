@@ -39,7 +39,7 @@
    - name: Copying check-mk agent
      become: true
      copy:
-       src: "~/pong/plugins/check-mk-agent.deb"
+       src: "~/pong/config/plugins/check-mk-agent.deb"
        dest: "/home/{{ ansible_user }}/Documents/"
        owner: "{{ ansible_user }}"
        group: root        
@@ -52,7 +52,7 @@
    - name: Copying check-mk plugins
      become: true
      copy:
-       src: "~/pong/plugins/{{ item }}"
+       src: "~/pong/config/plugins/{{ item }}"
        dest: /usr/lib/check_mk_agent/plugins/
        owner: "{{ ansible_user }}"
        group: root        
