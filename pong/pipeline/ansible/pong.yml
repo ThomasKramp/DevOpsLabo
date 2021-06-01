@@ -22,7 +22,6 @@
        name: pong:v1.0
        build:
          path: ~/Documents
-       source: build
        state: present
    
    - name: Create Container
