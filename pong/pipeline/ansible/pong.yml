@@ -1,6 +1,6 @@
 ---
  - hosts: all
-   #become: yes
+   become: yes
    vars:
     data_path: /data
    # pip3 install docker-py
@@ -16,7 +16,7 @@
    - name: copy Dockerfile
      copy:
        src: ~/pong/config/build/Dockerfile
-       dest: ~/Documents
+       dest: "/home/{{ ansible_user }}/Documents"
        owner: "{{ ansible_user }}"
        group: root
        mode: '0755'
@@ -25,7 +25,7 @@
      community.docker.docker_image:
        name: pong:v1.0
        build:
-         path: ~/Documents
+         path: "/home/{{ ansible_user }}/Documents"
        source: build
        state: present
    
