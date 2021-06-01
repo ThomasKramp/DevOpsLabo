@@ -40,7 +40,7 @@
        
    - name: Move Files
      copy:
-       src: ~/pong/config/game/
+       src: ~/pong/game/
        dest: "{{ data_path }}/pong/"
        owner: "{{ ansible_user }}"
        group: root
