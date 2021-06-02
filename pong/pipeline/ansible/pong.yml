@@ -39,13 +39,13 @@
       volumes:
        - "{{ data_path }}/pong:/root"
        
-   - name: Move Files
-     copy:
-       src: ~/pong/game/
-       dest: "{{ data_path }}/pong/"
-       owner: "{{ ansible_user }}"
-       group: root
-       mode: '0755'
+   #- name: Move Files
+   #  copy:
+   #    src: ~/pong/game/
+   #    dest: "{{ data_path }}/pong/"
+   #    owner: "{{ ansible_user }}"
+   #    group: root
+   #    mode: '0755'
        
 # docker run -dit --name pong -p 8082:80 -v /data/pong:/usr/local/apache2/htdocs/ httpd:2.4
 # usr/local/apache2/htdocs/
