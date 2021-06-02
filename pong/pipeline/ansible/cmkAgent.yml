@@ -8,8 +8,6 @@
    - name: Update apt cache
      apt: 
        update_cache: yes
-       state: latest
-       update_cache: yes
 
    - name: Install xinetd
      apt: 
