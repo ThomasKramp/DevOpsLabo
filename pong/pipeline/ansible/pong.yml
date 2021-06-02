@@ -33,7 +33,7 @@
      docker_container:
       name: pong
       image: pong:v1.0
-      ports:
+      port:
        - 8000:8000
       volumes:
        - "{{ data_path }}/pong:/root"
