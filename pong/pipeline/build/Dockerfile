@@ -10,6 +10,7 @@ RUN apt-get install -y mosquitto
 RUN apt-get install -y mosquitto-clients
 
 EXPOSE 8000
+EXPOSE 8080
 
 CMD [ "npm","run","start" ]
 
