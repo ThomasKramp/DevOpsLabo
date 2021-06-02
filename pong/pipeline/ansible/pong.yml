@@ -22,10 +22,11 @@
        mode: '0755'
         
    - name: build container image
-     community.docker.docker_image:
+     docker_image:
        name: pong:v1.0
        build:
          path: "/home/{{ ansible_user }}/Documents"
+       source: build
        state: present
    
    - name: Create Container
