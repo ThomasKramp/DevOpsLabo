@@ -28,6 +28,7 @@
          path: "/home/{{ ansible_user }}/Documents"
        source: build
        state: present
+       deprecation_warnings: False
    
    - name: Create Container
      docker_container:
