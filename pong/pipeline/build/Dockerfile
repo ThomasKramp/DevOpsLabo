@@ -10,7 +10,7 @@ RUN apt-get install -y mosquitto
 RUN apt-get install -y mosquitto-clients
 
 EXPOSE 8000
-EXPOSE 8080
+# EXPOSE 8080
 
 # RUN apt install -y ansible
 # docker build -t pong:latest <Path>
