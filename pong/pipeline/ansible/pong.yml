@@ -31,7 +31,7 @@
    
    - name: Create Container
      docker_container:
-      name: pong
+      name: pongchalp
       image: pong:v1.0
       volumes:
        - "{{ data_path }}/pong:/root"
