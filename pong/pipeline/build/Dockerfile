@@ -8,6 +8,9 @@ RUN apt-get install -y python3-tk
 RUN pip3 install paho-mqtt
 RUN apt-get install -y mosquitto
 RUN apt-get install -y mosquitto-clients
+
+EXPOSE 8000
+
 # RUN apt install -y ansible
 # docker build -t pong:latest <Path>
 # docker run -it --name python -v /data/python:/data -p 8000:8000 python-test
