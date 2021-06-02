@@ -12,10 +12,6 @@ RUN apt-get install -y mosquitto-clients
 EXPOSE 8000
 EXPOSE 8080
 
-CMD [ "npm","run","start" ]
-
-RUN echo "done"
-
 # RUN apt install -y ansible
 # docker build -t pong:latest <Path>
 # docker run -it --name python -v /data/python:/data -p 8000:8000 python-test
