@@ -9,8 +9,9 @@ RUN pip3 install paho-mqtt
 RUN apt-get install -y mosquitto
 RUN apt-get install -y mosquitto-clients
 
-EXPOSE 8000
-EXPOSE 8080
+EXPOSE 80 443 8000 8080 50000
+
+VOLUME ["/data"]
 
 # RUN apt install -y ansible
 # docker build -t pong:latest <Path>
