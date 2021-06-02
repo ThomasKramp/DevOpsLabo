@@ -35,7 +35,7 @@
       image: pong:v2.0
       ports:
        - "8000:8000"
-       # - "8082:8080"
+       - "8082:8080"
       volumes:
        - "{{ data_path }}/pong:/root"
        
