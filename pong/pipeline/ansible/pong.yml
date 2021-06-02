@@ -31,12 +31,12 @@
    
    - name: Create Container
      docker_container:
-      name: pongchalp
+      name: pong
       image: pong:v1.0
+      ports:
+       - 8000:8000
       volumes:
        - "{{ data_path }}/pong:/root"
-      ports:
-       - "8000:8000"
        
    - name: Move Files
      copy:
