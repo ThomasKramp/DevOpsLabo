@@ -16,3 +16,5 @@ VOLUME ["/data"]
 # RUN apt install -y ansible
 # docker build -t pong:latest <Path>
 # docker run -it --name python -v /data/python:/data -p 8000:8000 python-test
+# sudo snap install ngrok
+# ngrok http 8080
