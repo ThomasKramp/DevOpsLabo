@@ -1,0 +1,68 @@
+---
+ - hosts: all
+   become: yes
+   # ansible-galaxy collection install community.general
+   # community.general.ufw
+
+   tasks:
+   - name: Update apt cache
+     apt: 
+       update_cache: yes
+
+   - name: Install xinetd
+     apt: 
+       name: xinetd
+   
+   - name: Allow port 6556 firewall
+     community.general.ufw:
+       rule: allow
+       port: '6556'
+       
+   - name: Allow port 9098 (xinetd) firewall
+     community.general.ufw:
+       rule: allow
+       port: '9098'
+       proto: tcp
+       
+   - name: Allow port 22 (ssh) firewall
+     community.general.ufw:
+       rule: allow
+       port: '22'
+       proto: tcp
+   
+   - name: Enable firewall
+     community.general.ufw:
+       state: enabled
+
+   - name: Copying check-mk agent
+     become: true
+     copy:
+       src: "~/Documents/Repo/pong/pipeline/plugins/check-mk-agent.deb"
+       dest: "/home/{{ ansible_user }}/Documents/"
+       owner: "{{ ansible_user }}"
+       group: root        
+       mode: 0755
+       
+   - name: Install check-mk agent
+     apt:
+       deb: "/home/{{ ansible_user }}/Documents/Repo/pong/pipeline/plugins/check-mk-agent.deb"
+
+   - name: Copying check-mk plugins
+     become: true
+     copy:
+       src: "~/DDocuments/Repo/pong/pipeline/plugins/{{ item }}"
+       dest: /usr/lib/check_mk_agent/plugins/
+       owner: "{{ ansible_user }}"
+       group: root        
+       mode: 0755
+     loop: ['mk_docker_node', 'mk_docker_container_piggybacked']
+       
+   - name: Restart xinetd
+     ansible.builtin.systemd:
+       state: restarted
+       name: xinetd.service
+
+   - name: Restart firewall
+     ansible.builtin.systemd:
+       state: restarted
+       name: ufw.service

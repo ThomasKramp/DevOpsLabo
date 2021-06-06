@@ -1,0 +1,54 @@
+---
+ - hosts: all
+   become: yes
+   vars:
+    data_path: /data
+   # pip3 install docker-py
+   # apt-get install ansible
+   # ansible-galaxy collection install community.general
+   # community.general
+
+   tasks:
+   - name: Update apt cache
+     apt: 
+       update_cache: yes
+   
+   - name: copy Dockerfile
+     copy:
+       src: ~/Documents/Repo/pong/pipeline/build/Dockerfile
+       dest: "/home/{{ ansible_user }}/Documents"
+       owner: "{{ ansible_user }}"
+       group: root
+       mode: '0755'
+        
+   - name: build container image
+     docker_image:
+       name: pong:v2.0
+       build:
+         path: "/home/{{ ansible_user }}/Documents"
+       source: build
+       state: present
+   
+   - name: Create Container
+     docker_container:
+      name: pong
+      image: pong:v2.0
+      ports:
+       - "8000:8000"
+       - "8082:80"
+      volumes:
+       - "{{ data_path }}/pong:/data"
+       
+   - name: Move Files
+     copy:
+       src: ~/Documents/Repo/Labo2/
+       dest: "{{ data_path }}/pong/"
+       owner: "{{ ansible_user }}"
+       group: root
+       mode: '0755'
+       
+# docker run -dit --name pong -p 8082:80 -v /data/pong:/usr/local/apache2/htdocs/ httpd:2.4
+# usr/local/apache2/htdocs/
+
+# https://medium.com/appgambit/ansible-playbook-with-jenkins-pipeline-2846d4442a31
+# https://stackoverflow.com/questions/63847775/ansible-playbook-fails-when-executed-through-jenkins-usr-bin-env-python3-n
