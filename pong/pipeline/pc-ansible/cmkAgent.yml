@@ -1,6 +1,8 @@
 ---
  - hosts: all
    become: yes
+   args:
+       warn: false
    # ansible-galaxy collection install community.general
    # community.general.ufw
 

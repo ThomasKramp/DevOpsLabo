@@ -1,6 +1,8 @@
 ---
  - hosts: all
    become: yes
+   args:
+       warn: false
    # https://graspingtech.com/install-docker-ansible/
    
    tasks:
@@ -25,12 +27,12 @@
        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
        state: present
    
-   - name: Install Docker
-     apt: 
-       name: "docker-ce"
-       state: latest
-       update_cache: yes
-     #loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io']
+   #- name: Install Docker
+   #  apt: 
+   #    name: "{{ item }}"
+   #    state: latest
+   #    update_cache: yes
+   #  loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io']
      
    - name: install certain python modules for docker
      pip:

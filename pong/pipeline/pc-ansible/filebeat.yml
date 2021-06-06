@@ -1,6 +1,8 @@
 ---
  - hosts: all
    become: yes
+   args:
+       warn: false
    vars:
      ipv4: 192.168.0.6
 
