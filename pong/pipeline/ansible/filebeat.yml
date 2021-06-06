@@ -1,0 +1,44 @@
+---
+ - hosts: all
+   become: yes
+   vars:
+     ipv4: 192.168.0.6
+
+   tasks:
+   - name: Update apt cache
+     apt: 
+       update_cache: yes
+
+   # curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.2-amd64.deb
+   - name: Copy filebeat
+     copy:
+       src: "~/Documents/Repo/pong/pipeline/plugins/filebeat-7.6.2-amd64.deb"
+       dest: "/home/{{ ansible_user }}/Documents/"
+       owner: "{{ ansible_user }}"
+       group: root        
+       mode: 0755
+
+   # sudo dpkg -i filebeat-7.6.2-amd64.deb
+   - name: Install filebeat
+     apt:
+       deb: "/home/{{ ansible_user }}/Documents/filebeat-7.6.2-amd64.deb"
+
+   - name: Change /etc/filebeat/filebeat.yml file
+     shell: 'sed -i "s/{{ item.from }}/{{ item.to }}/" /etc/filebeat/filebeat.yml'
+     loop:
+       - { from: '  enabled: false', to: '  enabled: false' }
+       - { from: '#host:', to: 'host:' }
+       - { from: 'localhost', to: '{{ ipv4 }}' }
+       - { from: '#username:', to: 'username:' }
+       - { from: '#password:', to: 'password:' }
+     args:
+       warn: false
+
+   - name: Setup filebeat
+     shell: filebeat setup {{ item }}
+     loop: [ "--index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=[\"{{ ipv4 }}:9200\"]'", "--dashboards", "-e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['{{ ipv4 }}:9200'] -E output.elasticsearch.username=elastic -E output.elasticsearch.password=changeme -E setup.kibana.host={{ ipv4 }}:5601" ]
+
+   - name: Restart filebeat
+     ansible.builtin.systemd:
+       state: restarted
+       name: filebeat.service

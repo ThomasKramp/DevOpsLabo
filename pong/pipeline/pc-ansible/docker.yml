@@ -31,14 +31,6 @@
        state: latest
        update_cache: yes
      loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io']
-     
-   - name: Install certain python modules for docker
-     pip:
-       name: "{{ item.name }}"
-       state: present
-     loop:
-       - { name: docker }
-       - { name: docker-py }
 
    - name: Add user to docker group
      user:

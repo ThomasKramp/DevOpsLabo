@@ -38,6 +38,8 @@
        - "8082:80"
       volumes:
        - "{{ data_path }}/pong:/data"
+     args:
+       warn: false
        
    - name: Move Files
      copy:
