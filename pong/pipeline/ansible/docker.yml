@@ -27,10 +27,10 @@
    
    - name: Install Docker
      apt: 
-       name: "{{ item }}"
+       name: "docker-ce"
        state: latest
        update_cache: yes
-     loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io']
+     #loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io']
      
    - name: install certain python modules for docker
      pip:
