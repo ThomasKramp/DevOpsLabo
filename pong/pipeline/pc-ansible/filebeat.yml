@@ -12,7 +12,7 @@
    # curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.2-amd64.deb
    - name: Copy filebeat
      copy:
-       src: "~/pong/config/plugins/filebeat-7.6.2-amd64.deb"
+       src: "~/Documents/Repo/pong/pipeline/plugins/filebeat-7.6.2-amd64.deb"
        dest: "/home/{{ ansible_user }}/Documents/"
        owner: "{{ ansible_user }}"
        group: root        
