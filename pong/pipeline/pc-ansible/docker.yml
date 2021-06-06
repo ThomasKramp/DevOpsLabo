@@ -1,8 +1,6 @@
 ---
  - hosts: all
    become: yes
-   args:
-       warn: false
    # https://graspingtech.com/install-docker-ansible/
    
    tasks:

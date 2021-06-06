@@ -1,8 +1,6 @@
 ---
  - hosts: all
    become: yes
-   args:
-       warn: false
    vars:
     data_path: /data
    # pip3 install docker-py
