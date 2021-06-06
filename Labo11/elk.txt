@@ -28,11 +28,11 @@ sudo filebeat setup --index-management -E output.logstash.enabled=false -E 'outp
 sudo filebeat setup --dashboards
 
 sudo filebeat setup -e \
-  -E output.logstash.enabled=false \
-  -E output.elasticsearch.hosts=['localhost:9200'] \
-  -E output.elasticsearch.username=elastic \
-  -E output.elasticsearch.password=changeme \
-  -E setup.kibana.host=localhost:5601
+	-E output.logstash.enabled=false \
+	-E output.elasticsearch.hosts=['localhost:9200'] \
+	-E output.elasticsearch.username=elastic \
+	-E output.elasticsearch.password=changeme \
+	-E setup.kibana.host=localhost:5601
   
 sudo service filebeat start
 
@@ -50,17 +50,17 @@ Open command prompt as admin
 Via Visual Studio Code:
 	Edit: Change "enabled: false" --> "enabled: true"
 	Edit: Un-comment "host: "localhost:5601""
-	Edit: Change "host: "localhost:5601"" --> "host: "192.168.0.35:5601""
-	Edit: Change "host: "localhost:9200"" --> "host: "192.168.0.35:9200""
+	Edit: Change "host: "localhost:5601"" --> "host: "192.168.0.6:5601""
+	Edit: Change "host: "localhost:9200"" --> "host: "192.168.0.6:9200""
 	Edit: Un-comment "username: "elastic""
 	Edit: Un-comment "password: "changeme""
 
 Open command prompt as admin
-	.\filebeat.exe setup --index-management -E output.logstash.enabled=false -E output.elasticsearch.hosts=["192.168.0.35:9200"]
+	.\filebeat.exe setup --index-management -E output.logstash.enabled=false -E output.elasticsearch.hosts=["192.168.0.6:9200"]
 
 	.\filebeat.exe setup --dashboards
 
-	.\filebeat.exe setup -e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['192.168.0.35:9200'] -E output.elasticsearch.username=elastic ` -E output.elasticsearch.password=changeme -E setup.kibana.host=192.168.0.35:5601
+	.\filebeat.exe setup -e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['192.168.0.6:9200'] -E output.elasticsearch.username=elastic ` -E output.elasticsearch.password=changeme -E setup.kibana.host=192.168.0.6:5601
 
 	Start-Service filebeat
 
