@@ -25,20 +25,20 @@
        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
        state: present
    
-   #- name: Install Docker
-   #  apt: 
-   #    name: "{{ item }}"
-   #    state: latest
-   #    update_cache: yes
-   #  loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io']
+   - name: Install Docker
+     apt: 
+       name: "{{ item }}"
+       state: latest
+       update_cache: yes
+     loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io']
      
-   - name: install certain python modules for docker
-     pip:
-       name: "{{ item.name }}"
-       state: present
-     loop:
-       - { name: docker }
-       - { name: docker-py }
+   #- name: install certain python modules for docker
+   #  pip:
+   #    name: "{{ item.name }}"
+   #    state: present
+   #  loop:
+   #    - { name: docker }
+   #    - { name: docker-py }
 
    - name: Add user to docker group
      user:
