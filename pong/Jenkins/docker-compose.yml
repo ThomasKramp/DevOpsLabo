@@ -22,7 +22,6 @@ volumes:
 # cp -r plugins ~/Documents/Repo/pong/Compose/
 # cp -r users ~/Documents/Repo/pong/Compose/
 
-# sdf
 # commands check:
 # cd ~/Documents/Repo/pong/Compose
 # docker-compose -f docker-compose.yml up -d
