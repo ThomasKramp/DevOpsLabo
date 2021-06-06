@@ -26,7 +26,7 @@
    - name: Change /etc/filebeat/filebeat.yml file
      shell: 'sed -i "s/{{ item.from }}/{{ item.to }}/" /etc/filebeat/filebeat.yml'
      loop:
-       - { from: '  enabled: false', to: '  enabled: false' }
+       - { from: '  enabled: false', to: '  enabled: true' }
        - { from: '#host:', to: 'host:' }
        - { from: 'localhost', to: '{{ ipv4 }}' }
        - { from: '#username:', to: 'username:' }
