@@ -1,8 +1,8 @@
 ---
  - hosts: all
    become: yes
-   # ansible-galaxy collection install community.general
-   # community.general.ufw
+   vars:
+     ipv4: 192.168.0.6
 
    tasks:
    - name: Update apt cache
@@ -21,12 +21,24 @@
    # sudo dpkg -i filebeat-7.6.2-amd64.deb
    - name: Install filebeat
      apt:
-       deb: "/home/{{ ansible_user }}/Documents/Repo/pong/pipeline/plugins/filebeat-7.6.2-amd64.deb"
+       deb: "/home/{{ ansible_user }}/Documents/filebeat-7.6.2-amd64.deb"
 
-   - name: Go to /etc/filebeat/
-     chdir: /etc/filebeat/
-       
-   #- name: Restart filebeat
-   #  ansible.builtin.systemd:
-   #    state: restarted
-   #    name: filebeat.service
+   - name: Change /etc/filebeat/filebeat.yml file
+     shell: 'sed -i "s/{{ item.from }}/{{ item.to }}/" /etc/filebeat/filebeat.yml'
+     loop:
+       - { from: '  enabled: false', to: '  enabled: false' }
+       - { from: '#host:', to: 'host:' }
+       - { from: 'localhost', to: '{{ ipv4 }}' }
+       - { from: '#username:', to: 'username:' }
+       - { from: '#password:', to: 'password:' }
+     args:
+       warn: false
+
+   - name: Setup filebeat
+     shell: filebeat setup {{ item }}
+     loop: [ "--index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=[\"{{ ipv4 }}:9200\"]'", "--dashboards", "-e -E output.logstash.enabled=false -E output.elasticsearch.hosts=['{{ ipv4 }}:9200'] -E output.elasticsearch.username=elastic -E output.elasticsearch.password=changeme -E setup.kibana.host={{ ipv4 }}:5601" ]
+
+   - name: Restart filebeat
+     ansible.builtin.systemd:
+       state: restarted
+       name: filebeat.service
