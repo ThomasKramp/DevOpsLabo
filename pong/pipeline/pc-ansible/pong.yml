@@ -30,7 +30,7 @@
        state: present
    
    - name: Create Container
-     shell: docker run -dit --restart always --name test -p 8082:80 -v /data/pong:/home pong:v2.0
+     shell: docker run -dit --restart always --name pong -p 8000:8000 -v /data/pong:/home pong:v2.0
    #- name: Create Container
    #  docker_container:
    #   name: pong
