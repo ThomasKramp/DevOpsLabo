@@ -1,3 +1,4 @@
 [Kramp-DevOps]
 # Commando: ansible -m ping Kramp-DevOps
-192.168.0.7	ansible_user=kramp	ansible_become_user=root	ansible_become_password=kramp
+# 192.168.0.7	ansible_user=kramp	ansible_become_user=root	ansible_become_password=kramp
+192.168.0.17	ansible_user=kramp	ansible_become_user=root	ansible_become_password=kramp
