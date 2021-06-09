@@ -33,11 +33,12 @@
      docker_container:
       name: pong
       image: pong:v2.0
+      restart_policy: always
       ports:
        - "8000:8000"
        - "8082:80"
       volumes:
-       - "{{ data_path }}/pong:/data"
+       - "{{ data_path }}/pong:/home"
        
    - name: Move Files
      copy:
