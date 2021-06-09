@@ -16,7 +16,7 @@
    - name: copy Dockerfile
      copy:
        src: ~/pong/config/build/Dockerfile
-       dest: "/home/{{ ansible_user }}/Documents"
+       dest: "/home/{{ ansible_user }}/Documents/"
        owner: "{{ ansible_user }}"
        group: root
        mode: '0755'
@@ -25,7 +25,7 @@
      docker_image:
        name: pong:v2.0
        build:
-         path: "/home/{{ ansible_user }}/Documents"
+         path: "/home/{{ ansible_user }}/Documents/."
        source: build
        state: present
    
