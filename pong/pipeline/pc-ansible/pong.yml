@@ -30,13 +30,15 @@
        state: present
    
    - name: Create Container
-     docker_container:
-      name: pong
-      image: pong:v2.0
-      ports:
-        - "8000:8000"
-      volumes:
-        - /data/pong:/home
+     shell: docker run -dit --restart always --name test -p 8082:80 -v /data/pong:/home pong:v2.0
+   #- name: Create Container
+   #  docker_container:
+   #   name: pong
+   #   image: pong:v2.0
+   #   ports:
+   #     - "8000:8000"
+   #   volumes:
+   #     - "{{ data_path }}/pong:/home"
        
    - name: Move Files
      copy:
