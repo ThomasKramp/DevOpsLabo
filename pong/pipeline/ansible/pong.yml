@@ -33,12 +33,10 @@
      docker_container:
       name: pong
       image: pong:v2.0
-      restart_policy: always
       ports:
-       - "8000:8000"
-       - "8082:80"
+        - "8000:8000"
       volumes:
-       - "{{ data_path }}/pong:/home"
+        - "{{ data_path }}/pong:/home"
        
    - name: Move Files
      copy:
@@ -47,9 +45,8 @@
        owner: "{{ ansible_user }}"
        group: root
        mode: '0755'
-       
-# docker run -dit --name pong -p 8082:80 -v /data/pong:/usr/local/apache2/htdocs/ httpd:2.4
-# usr/local/apache2/htdocs/
+    
+# docker run -dit --restart always --name test -p 8082:80 -v /data/pong:/home pong:v2.0
 
 # https://medium.com/appgambit/ansible-playbook-with-jenkins-pipeline-2846d4442a31
 # https://stackoverflow.com/questions/63847775/ansible-playbook-fails-when-executed-through-jenkins-usr-bin-env-python3-n

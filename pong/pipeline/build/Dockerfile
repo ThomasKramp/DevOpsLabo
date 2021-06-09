@@ -9,7 +9,7 @@ RUN pip3 install paho-mqtt
 RUN apt-get install -y mosquitto
 RUN apt-get install -y mosquitto-clients
 
-EXPOSE 80 443 8000 8080 50000
+EXPOSE 8000
 
 VOLUME ["/data"]
 
