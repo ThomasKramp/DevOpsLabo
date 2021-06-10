@@ -13,7 +13,7 @@
        name: "{{ item }}"
        state: latest
        update_cache: yes
-     loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'gnupg-agent', 'python3-pip', 'python3-setuptools' ]
+     loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'gnupg-agent', 'python3-pip', 'python3-setuptools', 'python3-docker' ]
      
    - name: Add an apt signing key for Docker
      apt_key:
