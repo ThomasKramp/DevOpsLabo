@@ -1,0 +1,82 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.33.1">
+      <projectUrl>https://github.com/ThomasKramp/RaspBerryPi_Pong/</projectUrl>
+      <displayName></displayName>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.7.1">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/ThomasKramp/RaspBerryPi_Pong.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>**</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="empty-list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <com.cloudbees.jenkins.GitHubPushTrigger plugin="github@1.33.1">
+      <spec></spec>
+    </com.cloudbees.jenkins.GitHubPushTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>H * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>echo &quot;Go to right directory&quot;
+cd /var/jenkins_home/workspace/PongChamp/PongUpload
+
+
+echo &quot;Change broker to localhost&quot;
+find * | grep \.py | grep -v pycache | xargs -I % sh -c &quot;{ \
+	sed -i -e &apos;s/broker_address=\&quot;[0-9][0-9]*[0-9]*\.[0-9][0-9]*[0-9]*\.[0-9][0-9]*[0-9]*\.[0-9][0-9]*[0-9]*\&quot;/broker_address=\&quot;127\.0\.0\.1\&quot;/gi&apos; %; \
+}&quot; \/
+
+
+echo &quot;Add try catch to every file&quot;
+find * | grep \.py | grep -v pycache \
+	| xargs -I % sh -c &quot;{ \
+    	sed -i &apos;s/^/\t/&apos; %; \
+    	sed -i &apos;1s/^/try: \n/&apos; %; \
+    	printf \&quot;\nexcept Exception as e:\&quot; &gt;&gt; %; \
+    	printf \&quot;\n\tprint(&apos;Error: \&quot;{}\&quot;&apos;.format(e))\&quot; &gt;&gt; %; \
+    }&quot; \/
+
+
+echo &quot;Copy files&quot;
+if [ ! -d ~/pong ]
+then
+	mkdir ~/pong
+	mkdir ~/pong/game
+fi
+cp -r /var/jenkins_home/workspace/PongChamp/PongUpload/* /var/jenkins_home/pong/game
+
+
+echo &quot;Change while loops into if statements&quot;
+find * | grep \.py | grep -v pycache | xargs -I % sh -c &quot;{ sed -i -e &apos;s/while.*/if True:/gi&apos; %; }&quot;
+
+find * | grep \.py | grep -v pycache | xargs -t -I % sh -c &quot;{ echo %; python3 %; echo &apos;\n&apos;; }&quot;</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
